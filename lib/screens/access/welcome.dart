@@ -19,8 +19,8 @@ class welcome extends StatelessWidget {
         elevation: 0.0,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.light,
-          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.light,
         ),
       ),
       body: Center(
@@ -45,15 +45,17 @@ class welcome extends StatelessWidget {
                                 child: Container(
                                   width: 213.28,
                                   height: 291.85,
-                                  color: Color(0xFFB3D1B3),
+                                  color: Color(0xFF406752),
                                 )),
                           ),
+                          Align(
+                            alignment: FractionalOffset.center,
+                            child: Image.asset('assets/images/curved_line.png', width: MediaQuery.of(context).size.width,)),
                           Align(
                               alignment: FractionalOffset.center,
                               child: Card(
                                 color: Colors.transparent,
-                                elevation: 10.0,
-                                shadowColor: Color(0xFFB3D1B3),
+                                elevation: 12.0,
                                   child: Image.asset("assets/images/welcome.png", width: 213.28, height: 291.85,),
                                 ),
                               )
@@ -64,8 +66,8 @@ class welcome extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(20.0, 40.0, 20.0, 20.0),
                       child: RichText(text: TextSpan(
                           children: [
-                            TextSpan(text: "Experience Social Media\n", style: TextStyle(color: Colors.black, fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold),),
-                            TextSpan(text: "Your Way With ", style: TextStyle(color: Colors.black, fontSize: 20.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
+                            TextSpan(text: "Experience Social Media\n", style: TextStyle(color: Colors.white, fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold),),
+                            TextSpan(text: "Your Way With ", style: TextStyle(color: Colors.white, fontSize: 20.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
                             TextSpan(text: "Glory World", style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 20.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
                           ]
                       ),
@@ -79,7 +81,7 @@ class welcome extends StatelessWidget {
                             " You can have the experience you want without ever using another"
                             " app, at anytime.",
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.grey, fontSize: 12.0),
+                        style: TextStyle(color: Colors.white, fontSize: 12.0),
                       ),
                     ),
                     Padding(
@@ -104,7 +106,14 @@ class welcome extends StatelessWidget {
                             RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0)
                             )
+                        ),
+                      textStyle: MaterialStateProperty.all<TextStyle>(
+                        TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Poppins'
                         )
+                      ),
+                      foregroundColor: MaterialStateProperty.all(Colors.white)
                     ),),
             ),)
           ]

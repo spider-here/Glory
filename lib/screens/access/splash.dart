@@ -14,19 +14,38 @@ class splash extends StatelessWidget{
         elevation: 0.0,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.light,
-          statusBarIconBrightness: Brightness.dark,
-        ),
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.dark,),
       ),
       body: Stack(
         children: [
           Align(
             alignment: FractionalOffset.center,
             child: AnimatedSplashScreen(
-              splash: Image.asset("assets/images/logo.jpeg"),
+              splash:
+              Card(
+                color: Colors.transparent,
+                elevation: 20.0,
+                shadowColor: Theme.of(context).primaryColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100.0),
+                ),
+                child: Container( width: 180.0,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100.0),
+                      border: Border.all(
+                        color: Theme.of(context).primaryColor,
+                        width: 2.0
+                      ),
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/logo.jpeg',),
+                          fit: BoxFit.fitHeight
+                      )
+                  ),),
+              ),
               nextScreen: welcome(),
               splashTransition: SplashTransition.fadeTransition,
-              splashIconSize: MediaQuery.of(context).size.width / 2,
+              splashIconSize: 180.0,
               centered: true,
               animationDuration: Duration(milliseconds: 800),
               duration: 1500,

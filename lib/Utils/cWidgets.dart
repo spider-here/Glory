@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 
 class cWidgets{
 
-  Widget profilePageStats({required String totalFollowers, required String totalFollowing, required String totalLikes, required onTapFollowers, required onTapFollowing, required onTapLikes, }){
+  Widget profilePageStats({required String totalFollowers,
+    required String totalFollowing, required String totalLikes,
+    required onTapFollowers, required onTapFollowing,
+    required onTapLikes, }){
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -14,9 +17,9 @@ class cWidgets{
           child: Column(
             children: [Text(
               totalFollowers,
-              style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+              style: TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),
             ),
-              Text("Followers", style: TextStyle(color: Colors.grey, fontSize: 12.0),)
+              Text("Followers", style: TextStyle(color: Colors.white, fontSize: 12.0),)
             ]
           ),
         ),
@@ -26,9 +29,9 @@ class cWidgets{
           child: Column(
             children: [Text(
               totalFollowing,
-              style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+              style: TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),
             ),
-              Text("Following", style: TextStyle(color: Colors.grey, fontSize: 12.0),)
+              Text("Following", style: TextStyle(color: Colors.white, fontSize: 12.0),)
             ]
           ),
         ),
@@ -38,9 +41,9 @@ class cWidgets{
           child: Column(
             children: [Text(
               totalLikes,
-              style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+              style: TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),
             ),
-              Text("Likes", style: TextStyle(color: Colors.grey, fontSize: 12.0),)
+              Text("Likes", style: TextStyle(color: Colors.white, fontSize: 12.0),)
             ]
           ),
         ),

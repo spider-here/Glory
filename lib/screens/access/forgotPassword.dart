@@ -11,7 +11,7 @@ class forgotPassword extends StatelessWidget{
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         iconTheme: IconThemeData(
-            color: Colors.black
+            color: Colors.white
         ),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
@@ -25,19 +25,19 @@ class forgotPassword extends StatelessWidget{
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text("Forgot Password?", style: TextStyle(color: Colors.black, fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
+            Text("Forgot Password?", style: TextStyle(color: Colors.white, fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
             Padding(padding: const EdgeInsets.only(top: 10.0)),
             Text(
               "Enter your phone number below to recieve your password reset instruction.",
-              style: TextStyle(color: Colors.grey, fontSize: 14.0),
+              style: TextStyle(color: Colors.white, fontSize: 14.0),
             ),
             Padding(padding: const EdgeInsets.only(top: 30.0)),
             TextField(
+              style: TextStyle(color: Theme.of(context).primaryColor),
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                  isDense: true,
-                  label: Text("Phone Number"),
-                  prefixIcon: Icon(Icons.phone_iphone_outlined),
-                  contentPadding: const EdgeInsets.all(0.0)
+                label: Text("Phone Number", style: TextStyle(color: Colors.white,)),
+                prefixIcon: Icon(Icons.phone_iphone_outlined, color: Colors.white,),
               ),
             ),
             Padding(padding: const EdgeInsets.only(top: 30.0)),

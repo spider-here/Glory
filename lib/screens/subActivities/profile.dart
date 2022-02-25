@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:glory/Utils/cWidgets.dart';
 
 class profile extends StatelessWidget {
@@ -15,16 +17,10 @@ class profile extends StatelessWidget {
         backgroundColor: Theme.of(context).backgroundColor,
         extendBodyBehindAppBar: false,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.person_add_alt,
-              color: Colors.black,
-            ),
-          ),
+        systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: Theme.of(context).backgroundColor,
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,),
           title: InkWell(
               onTap: () {},
               child: Row(
@@ -34,30 +30,53 @@ class profile extends StatelessWidget {
                     Text(
                       "Username",
                       style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 14.0),
                     ),
                     Icon(
                       Icons.arrow_drop_down,
-                      color: Colors.black,
+                      color: Colors.white,
                     )
                   ])),
+          centerTitle: true,
+          iconTheme: IconThemeData(
+              color: Colors.white
+          ),
+          backgroundColor: Colors.black,
+          elevation: 0.0,
+          bottom: PreferredSize(preferredSize: Size.fromHeight(2.0),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Divider(
+                height: 0.0,
+                thickness: 0.5,
+                color: Colors.grey,
+              ),
+            ),
+          ),
           actions: [
             IconButton(
                 onPressed: () {},
-                icon: Icon(
-                  Icons.more_horiz_outlined,
-                  color: Colors.black,
-                ))
+                splashColor: Theme.of(context).primaryColor,
+                splashRadius: 20.0,
+                icon: ImageIcon(
+                  AssetImage('assets/images/spin_wheel.png'),
+                  color: Colors.white,
+                )),
+            IconButton(
+                onPressed: () {},
+                splashColor: Theme.of(context).primaryColor,
+                splashRadius: 20.0,
+                icon: ImageIcon(
+                  AssetImage('assets/images/cart_bag.png'),
+                  color: Colors.white,
+                )),
+
           ],
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Theme.of(context).backgroundColor,
-            statusBarBrightness: Brightness.light,
-            statusBarIconBrightness: Brightness.dark,
-          ),
         ),
         body: SingleChildScrollView(
+          primary: true,
           physics: BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -66,7 +85,7 @@ class profile extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: CircleAvatar(
-                    backgroundColor: Colors.black,
+                    backgroundColor: Colors.white,
                     radius: 40.0,
                     child: ClipOval(
                       child: _profileImageURL != null
@@ -79,7 +98,7 @@ class profile extends StatelessWidget {
               Text(
                 "@user_name",
                 style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 14.0),
               ),
@@ -103,34 +122,61 @@ class profile extends StatelessWidget {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all(Colors.black),
-                    ),
+                        side: MaterialStateProperty.all<BorderSide>(
+                            BorderSide(
+                                width: 1.0,
+                                color: Colors.white
+                            )
+                        ),
+                        textStyle: MaterialStateProperty.all<TextStyle>(
+                            TextStyle(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold
+                            )
+                        ),
+                      foregroundColor: MaterialStateProperty.all(Colors.white),
+                    )
                   ),
                   Padding(padding: const EdgeInsets.only(right: 10.0)),
                   OutlinedButton(
                     onPressed: () {},
                     child: Icon(Icons.bookmark_outline),
                     style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all(Colors.black),
-                    ),
+                      side: MaterialStateProperty.all<BorderSide>(
+                          BorderSide(
+                              width: 1.0,
+                              color: Colors.white
+                          )
+                      ),
+                      textStyle: MaterialStateProperty.all<TextStyle>(
+                          TextStyle(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold
+                          )
+                      ),
+                      foregroundColor: MaterialStateProperty.all(Colors.white),
+                    )
                   ),
                 ],
               ),
               TabBar(
                 indicatorSize: TabBarIndicatorSize.label,
+                indicatorColor: Colors.white,
                 enableFeedback: true,
                 onTap: (index) {},
                 tabs: [
                   Tab(
                     icon: Icon(
                       Icons.grid_4x4_outlined,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                   Tab(
                     icon: Icon(
                       Icons.favorite_outline,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                 ],
