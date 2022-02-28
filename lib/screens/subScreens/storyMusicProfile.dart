@@ -107,7 +107,6 @@ class storyMusicProfile extends StatelessWidget{
                     borderRadius: BorderRadius.circular(20.0)
                   )
                 ),
-                foregroundColor: MaterialStateProperty.all(Colors.white)
               ),),)),
 
         ],

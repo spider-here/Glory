@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:glory/screens/subActivities/movieDescription.dart';
-import 'package:glory/screens/subActivities/profile.dart';
-import 'package:glory/screens/subActivities/search.dart';
+import 'package:glory/Utils/cWidgets.dart';
+import 'package:glory/screens/subScreens/movieDescription.dart';
+import 'package:glory/screens/subScreens/profile.dart';
+import 'package:glory/screens/subScreens/search.dart';
 
 class streaming extends StatelessWidget {
 
@@ -22,6 +23,8 @@ class streaming extends StatelessWidget {
   String _dummyDescription = "This is the Description";
   String _dummyNewPrice = "96.7";
   String _dummyOldPrice = "110.5";
+
+  cWidgets _widgets = new cWidgets();
 
   @override
   Widget build(BuildContext context) {
@@ -46,17 +49,7 @@ class streaming extends StatelessWidget {
             iconTheme: IconThemeData(color: Colors.white),
             backgroundColor: Colors.transparent,
             elevation: 0.0,
-            leading: IconButton(
-              icon: Image.asset(
-                'assets/images/profile.png',
-                color: Colors.white,
-              ),
-              splashColor: Theme.of(context).primaryColor,
-              splashRadius: 20.0,
-              onPressed: () {
-                Get.to(() => profile());
-              },
-            ),
+            leading: _widgets.profileButton(context: context, profileImageURL: _dummyAlbum[0]),
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(50.0),
               child: Column(
@@ -85,22 +78,8 @@ class streaming extends StatelessWidget {
               ),
             ),
             actions: [
-              IconButton(
-                  onPressed: () {},
-                  splashColor: Theme.of(context).primaryColor,
-                  splashRadius: 20.0,
-                  icon: ImageIcon(
-                    AssetImage('assets/images/spin_wheel.png'),
-                    color: Colors.white,
-                  )),
-              IconButton(
-                  onPressed: () {},
-                  splashColor: Theme.of(context).primaryColor,
-                  splashRadius: 20.0,
-                  icon: ImageIcon(
-                    AssetImage('assets/images/cart_bag.png'),
-                    color: Colors.white,
-                  )),
+              _widgets.wheelButton(context: context),
+              _widgets.cartButton(context: context),
             ],
           ),
           body: TabBarView(

@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:glory/screens/subActivities/profile.dart';
-import 'package:glory/screens/subActivities/search.dart';
+import 'package:glory/Utils/cWidgets.dart';
+import 'package:glory/screens/subScreens/musicPlayer.dart';
+import 'package:glory/screens/subScreens/profile.dart';
+import 'package:glory/screens/subScreens/search.dart';
 
 class music extends StatelessWidget {
   List<String> _dummyAlbum = [
@@ -15,6 +17,8 @@ class music extends StatelessWidget {
     "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80),"
         "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
   ];
+
+  cWidgets _widgets = new cWidgets();
 
   @override
   Widget build(BuildContext context) {
@@ -43,17 +47,7 @@ class music extends StatelessWidget {
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        leading: IconButton(
-          icon: Image.asset(
-            'assets/images/profile.png',
-            color: Colors.white,
-          ),
-          splashColor: Theme.of(context).primaryColor,
-          splashRadius: 20.0,
-          onPressed: () {
-            Get.to(() => profile());
-          },
-        ),
+        leading: _widgets.profileButton(context: context, profileImageURL: _dummyAlbum[0]),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(2.0),
           child: Padding(
@@ -66,25 +60,13 @@ class music extends StatelessWidget {
           ),
         ),
         actions: [
-          IconButton(
-              onPressed: () {},
-              splashColor: Theme.of(context).primaryColor,
-              splashRadius: 20.0,
-              icon: ImageIcon(
-                AssetImage('assets/images/spin_wheel.png'),
-                color: Colors.white,
-              )),
-          IconButton(
-              onPressed: () {},
-              splashColor: Theme.of(context).primaryColor,
-              splashRadius: 20.0,
-              icon: ImageIcon(
-                AssetImage('assets/images/cart_bag.png'),
-                color: Colors.white,
-              )),
+          _widgets.wheelButton(context: context),
+          _widgets.cartButton(context: context),
         ],
       ),
       body: ListView(
+        physics: BouncingScrollPhysics(),
+        shrinkWrap: true,
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
@@ -98,7 +80,7 @@ class music extends StatelessWidget {
                 return Builder(
                   builder: (BuildContext context) {
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {Get.to(()=>musicPlayer());},
                       child: Container(
                         width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.symmetric(horizontal: 8.0),
@@ -136,7 +118,7 @@ class music extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    onTap: () {},
+                    onTap: () {Get.to(()=>musicPlayer());},
                     child: Column(
                       children: [
                         Flexible(
@@ -187,7 +169,7 @@ class music extends StatelessWidget {
                   fontSize: 18.0),
             ),
             trailing: TextButton(
-              onPressed: () {},
+              onPressed: () {Get.to(()=>musicPlayer());},
               child: Text("See All"),
             ),
           ),
@@ -199,6 +181,7 @@ class music extends StatelessWidget {
                   itemCount: _dummyAlbum.length,
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
+                      onTap: (){Get.to(()=>musicPlayer());},
                       dense: true,
                       leading: Container(
                         width: 50.0,
@@ -236,7 +219,7 @@ class music extends StatelessWidget {
                   fontSize: 18.0),
             ),
             trailing: TextButton(
-              onPressed: () {},
+              onPressed: () {Get.to(()=>musicPlayer());},
               child: Text("See All"),
             ),
           ),
@@ -249,7 +232,7 @@ class music extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                      onTap: () {},
+                      onTap: () {Get.to(()=>musicPlayer());},
                       child: Container(
                         width: MediaQuery.of(context).size.width / 2,
                         margin: EdgeInsets.symmetric(horizontal: 8.0),
@@ -295,7 +278,7 @@ class music extends StatelessWidget {
                   fontSize: 18.0),
             ),
             trailing: TextButton(
-              onPressed: () {},
+              onPressed: () {Get.to(()=>musicPlayer());},
               child: Text("See All"),
             ),
           ),
@@ -308,7 +291,7 @@ class music extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    onTap: () {},
+                    onTap: () {Get.to(()=>musicPlayer());},
                     child: Column(
                       children: [
                         Flexible(
@@ -359,7 +342,7 @@ class music extends StatelessWidget {
                   fontSize: 18.0),
             ),
             trailing: TextButton(
-              onPressed: () {},
+              onPressed: () {Get.to(()=>musicPlayer());},
               child: Text("See All"),
             ),
           ),
@@ -372,7 +355,7 @@ class music extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    onTap: () {},
+                    onTap: () {Get.to(()=>musicPlayer());},
                     child: Column(
                       children: [
                         Flexible(

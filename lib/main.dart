@@ -20,6 +20,8 @@ void main() {
                   borderRadius: BorderRadius.circular(10.0),
                 )
             ),
+            foregroundColor: MaterialStateProperty.all(Colors.white),
+            backgroundColor: MaterialStateProperty.all(appPrimary),
             textStyle: MaterialStateProperty.all<TextStyle>(
                 TextStyle(
                     fontFamily: 'Poppins',

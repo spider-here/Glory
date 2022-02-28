@@ -103,7 +103,6 @@ class login extends StatelessWidget{
                           height: 40.0,
                           child: ElevatedButton(onPressed: ()=>Get.off(()=>navigation()), child: Text("Sign In"),
                             style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all(Colors.white),
                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10.0)

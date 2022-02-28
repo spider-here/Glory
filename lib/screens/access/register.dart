@@ -82,10 +82,7 @@ class register extends StatelessWidget{
                 SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: 40.0,
-                    child: ElevatedButton(onPressed: (){}, child: Text("Sign Up"),
-                      style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all(Colors.white),
-                      ),)),
+                    child: ElevatedButton(onPressed: (){}, child: Text("Sign Up"),)),
                 // Padding(padding: const EdgeInsets.only(top: 15.0)),
                 Spacer(flex: 1),
                 SizedBox(

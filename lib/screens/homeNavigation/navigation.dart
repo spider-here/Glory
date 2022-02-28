@@ -1,4 +1,3 @@
-import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,10 +6,8 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:glory/controllers/navigation_get.dart';
 import 'package:glory/screens/homeNavigation/story.dart';
 import 'package:glory/screens/homeNavigation/streaming.dart';
-
-import '../subActivities/storyMusicProfile.dart';
 import 'books.dart';
-import 'events.dart';
+import 'more.dart';
 import 'music.dart';
 
 class navigation extends StatelessWidget {
@@ -23,51 +20,50 @@ class navigation extends StatelessWidget {
       return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         extendBody: true,
-        bottomNavigationBar:FFNavigationBar(
+        bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), ),
+      child: BottomNavigationBar(
+          currentIndex: getController.selectedIndex,
+            onTap: (int index){
+            getController.updateIndex(index);
+            _navController.jumpToPage(index);
+            },
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.grey.shade900,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: Theme.of(context).primaryColor,
+        unselectedIconTheme: IconThemeData(
+          size: 24.0
+        ),
+        selectedIconTheme: IconThemeData(
+          size: 26.0,
+              color: Theme.of(context).primaryColor,
+        ),
+
             items: [
-              FFNavigationBarItem(
-                iconData: Icons.add_circle_outline_outlined,
-                label: "Reels",
+              BottomNavigationBarItem(
+                label: "Reels", icon: Icon(Icons.donut_large_outlined),
+                  activeIcon: Icon(Icons.donut_large_rounded)
               ),
-              FFNavigationBarItem(
-                iconData: Icons.ondemand_video_outlined,
-                label: "Streaming",
+              BottomNavigationBarItem(
+                label: "Streaming", icon: Icon(Icons.ondemand_video_outlined),
+                  activeIcon: Icon(Icons.ondemand_video_rounded)
               ),
-              FFNavigationBarItem(
-                iconData: Icons.music_note_outlined,
-                label: "Music",
+              BottomNavigationBarItem(
+                label: "Music", icon: Icon(Icons.music_note_outlined),
+                activeIcon: Icon(Icons.music_note_rounded)
               ),
-              FFNavigationBarItem(
-                iconData: Icons.book_outlined,
-                label: "Books",
+              BottomNavigationBarItem(
+                label: "Books", icon: Icon(Icons.book_outlined),
+                  activeIcon: Icon(Icons.book_rounded)
               ),
-              FFNavigationBarItem(
-                iconData: Icons.event_outlined,
-                label: "Events",
+              BottomNavigationBarItem(
+                label: "More", icon: Icon(Icons.more_horiz_rounded),
               ),
             ],
-            onSelectTab: (index) {
-              controller.updateIndex(index);
-              _navController.jumpToPage(index);
-            },
-            theme: FFNavigationBarTheme(
-              barBackgroundColor: Colors.grey.shade900,
-              selectedItemBackgroundColor: Theme.of(context).primaryColor,
-              selectedItemLabelColor: Theme.of(context).primaryColor,
-              showSelectedItemShadow: false,
-              selectedItemBorderColor: Theme.of(context).primaryColor,
-              selectedItemIconColor: Theme.of(context).backgroundColor,
-              unselectedItemTextStyle: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 0.0,
-              ),
-              selectedItemTextStyle: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 0.0,
-              ),
-              // barHeight: 50.0,
-            ),
-            selectedIndex: controller.selectedIndex,
+        ),
         ),
         body: PageView(
           physics: NeverScrollableScrollPhysics(),
@@ -78,7 +74,7 @@ class navigation extends StatelessWidget {
             streaming(),
             music(),
             books(),
-            events(),
+            more(),
           ],
         ),
       );

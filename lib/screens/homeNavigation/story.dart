@@ -2,11 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:glory/screens/subActivities/storyMusicProfile.dart';
+import 'package:glory/Utils/cWidgets.dart';
+import 'package:glory/screens/subScreens/storyMusicProfile.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:glory/screens/subActivities/profile.dart';
 
 class story extends StatelessWidget {
+
+  cWidgets _widgets = new cWidgets();
+  String _dummyProfilePicture = "https://images.pexels.com/photos/853151/pexels-photo-853151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -31,18 +35,7 @@ class story extends StatelessWidget {
             iconTheme: const IconThemeData(color: Colors.white),
             backgroundColor: Colors.transparent,
             elevation: 0.0,
-            leading: InkWell(
-              onTap: () {
-                Get.to(() => profile());
-              },
-              child: const Padding(
-                padding: EdgeInsets.only(left: 8.0),
-                child: CircleAvatar(
-                  foregroundImage: AssetImage('assets/images/sample_image.png'),
-                ),
-              ),
-            ),
-            leadingWidth: 40.0,
+            leading: _widgets.profileButton(context: context, profileImageURL: _dummyProfilePicture),
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(50.0),
               child: Container(

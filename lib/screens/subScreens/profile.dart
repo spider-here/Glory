@@ -12,7 +12,7 @@ class profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         extendBodyBehindAppBar: false,
@@ -169,16 +169,23 @@ class profile extends StatelessWidget {
                 tabs: [
                   Tab(
                     icon: Icon(
-                      Icons.grid_4x4_outlined,
+                      Icons.calendar_today_rounded,
                       color: Colors.white,
                     ),
                   ),
                   Tab(
                     icon: Icon(
-                      Icons.favorite_outline,
+                      Icons.filter_alt_outlined,
                       color: Colors.white,
                     ),
                   ),
+                  Tab(
+                    icon: Icon(
+                      Icons.filter_alt_outlined,
+                      color: Colors.white,
+                    ),
+                  ),
+
                 ],
               ),
         SizedBox(
@@ -198,6 +205,16 @@ class profile extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index){
                     return Image.asset('assets/images/sample_image.png');
                   }),
+        GridView.builder(
+                physics: BouncingScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 2.0,
+                    crossAxisSpacing: 2.0),
+                itemCount: 5,
+                itemBuilder: (BuildContext context, int index){
+                  return Image.asset('assets/images/sample_image.png');
+                }),
         GridView.builder(
                 physics: BouncingScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

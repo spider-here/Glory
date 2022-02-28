@@ -113,7 +113,6 @@ class welcome extends StatelessWidget {
                           fontFamily: 'Poppins'
                         )
                       ),
-                      foregroundColor: MaterialStateProperty.all(Colors.white)
                     ),),
             ),)
           ]

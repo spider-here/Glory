@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 
@@ -32,6 +33,10 @@ class movieDescription extends StatelessWidget {
         backgroundColor: Theme.of(context).backgroundColor,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Theme.of(context).backgroundColor,
+            statusBarBrightness: Brightness.dark,
+            statusBarIconBrightness: Brightness.light,),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           iconTheme: IconThemeData(color: Colors.white),
