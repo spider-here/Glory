@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -10,7 +9,7 @@ class forgotPassword extends StatelessWidget{
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
             color: Colors.white
         ),
         systemOverlayStyle: SystemUiOverlayStyle(
@@ -25,26 +24,26 @@ class forgotPassword extends StatelessWidget{
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text("Forgot Password?", style: TextStyle(color: Colors.white, fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
-            Padding(padding: const EdgeInsets.only(top: 10.0)),
-            Text(
-              "Enter your phone number below to recieve your password reset instruction.",
+            const Text("Forgot Password?", style: TextStyle(color: Colors.white, fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
+            const Padding(padding: EdgeInsets.only(top: 10.0)),
+            const Text(
+              "Enter your phone number below to receive your password reset instruction.",
               style: TextStyle(color: Colors.white, fontSize: 14.0),
             ),
-            Padding(padding: const EdgeInsets.only(top: 30.0)),
+            const Padding(padding: EdgeInsets.only(top: 30.0)),
             TextField(
               style: TextStyle(color: Theme.of(context).primaryColor),
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 label: Text("Phone Number", style: TextStyle(color: Colors.white,)),
                 prefixIcon: Icon(Icons.phone_iphone_outlined, color: Colors.white,),
               ),
             ),
-            Padding(padding: const EdgeInsets.only(top: 30.0)),
+            const Padding(padding: EdgeInsets.only(top: 30.0)),
             SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 40.0,
-                child: ElevatedButton(onPressed: (){}, child: Text("Reset Password", style: TextStyle(fontWeight: FontWeight.bold),),
+                child: ElevatedButton(onPressed: (){}, child: const Text("Reset Password", style: TextStyle(fontWeight: FontWeight.bold),),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.yellow.shade700),
                     foregroundColor: MaterialStateProperty.all(Colors.black),

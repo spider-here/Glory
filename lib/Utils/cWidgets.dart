@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:glory/screens/subScreens/cart.dart';
 import 'package:glory/screens/subScreens/profile.dart';
-import 'package:glory/screens/subScreens/spinWheel.dart';
+import 'package:glory/screens/subScreens/search.dart';
+import 'package:glory/screens/subScreens/spin/spinWheel.dart';
 
 class cWidgets{
 
@@ -17,43 +15,43 @@ class cWidgets{
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Spacer(flex: 2,),
+        const Spacer(flex: 2,),
         InkWell(
           onTap: onTapFollowers,
           child: Column(
             children: [Text(
               totalFollowers,
-              style: TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),
+              style: const TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),
             ),
-              Text("Followers", style: TextStyle(color: Colors.white, fontSize: 12.0),)
+              const Text("Followers", style: TextStyle(color: Colors.grey, fontSize: 12.0),)
             ]
           ),
         ),
-        Spacer(flex: 1,),
+        const Spacer(flex: 1,),
         InkWell(
           onTap: onTapFollowing,
           child: Column(
             children: [Text(
               totalFollowing,
-              style: TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),
+              style: const TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),
             ),
-              Text("Following", style: TextStyle(color: Colors.white, fontSize: 12.0),)
+              const Text("Following", style: TextStyle(color: Colors.grey, fontSize: 12.0),)
             ]
           ),
         ),
-        Spacer(flex: 1,),
+        const Spacer(flex: 1,),
         InkWell(
           onTap: onTapLikes,
           child: Column(
             children: [Text(
               totalLikes,
-              style: TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),
+              style: const TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),
             ),
-              Text("Likes", style: TextStyle(color: Colors.white, fontSize: 12.0),)
+              const Text("Likes", style: TextStyle(color: Colors.grey, fontSize: 12.0),)
             ]
           ),
         ),
-        Spacer(flex: 2,),
+        const Spacer(flex: 2,),
       ],
     );
   }
@@ -63,7 +61,7 @@ class cWidgets{
         onPressed: () {Get.to(()=>cart(), transition: Transition.rightToLeft);},
         splashColor: Theme.of(context).primaryColor,
         splashRadius: 20.0,
-        icon: ImageIcon(
+        icon: const ImageIcon(
           AssetImage('assets/images/cart_bag.png'),
           color: Colors.white,
         ));
@@ -74,17 +72,27 @@ Widget wheelButton({required BuildContext context}){
         onPressed: () {Get.to(()=>spinWheel(), transition: Transition.rightToLeft);},
         splashColor: Theme.of(context).primaryColor,
         splashRadius: 20.0,
-        icon: ImageIcon(
+        icon: const ImageIcon(
           AssetImage('assets/images/spin_wheel.png'),
           color: Colors.white,
         ));
   }
 
-Widget profileButton({required BuildContext context, required String profileImageURL}){
+Widget newMessageButton({required BuildContext context}){
+    return IconButton(
+        onPressed: () {Get.to(()=>search(), transition: Transition.rightToLeft);},
+        splashColor: Theme.of(context).primaryColor,
+        splashRadius: 20.0,
+        icon: const Icon(
+          Icons.outgoing_mail
+        ));
+  }
+
+Widget profileButton({required BuildContext context, required String profileImageURL, required bool personalProfile}){
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: InkWell(
-          onTap: () {Get.to(()=>profile(), transition: Transition.leftToRight);},
+          onTap: () {Get.to(()=>profile(personalProfile: personalProfile,), transition: Transition.leftToRight);},
           splashColor: Theme.of(context).primaryColor,
           radius: 15.0,
           child: CircleAvatar(

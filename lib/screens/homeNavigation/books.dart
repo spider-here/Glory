@@ -1,26 +1,26 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:glory/Utils/cWidgets.dart';
 import 'package:glory/screens/subScreens/bookDescription.dart';
 import 'package:glory/screens/subScreens/search.dart';
 
 class books extends StatelessWidget{
-  List<String> _dummyAlbum = [
+  final List<String> _dummyAlbum = [
     "https://images.pexels.com/photos/853151/pexels-photo-853151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=464&q=80",
     "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80),"
         "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
   ];
 
-  String _dummyPrice = "9.99";
-  double _dummyRating = 4.0;
+  final String _dummyPrice = "9.99";
+  final double _dummyRating = 4.0;
 
-  cWidgets _widgets = new cWidgets();
+  final cWidgets _widgets = cWidgets();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class books extends StatelessWidget{
             onTap: () {
               Get.to(() => search(), fullscreenDialog: true);
             },
-            child: Container(
+            child: const SizedBox(
                 width: double.maxFinite,
                 child: AutoSizeText(
                   "Books",
@@ -45,15 +45,15 @@ class books extends StatelessWidget{
                   maxLines: 1,
                 ))),
         centerTitle: true,
-        titleTextStyle: TextStyle(color: Colors.white),
-        iconTheme: IconThemeData(color: Colors.white),
+        titleTextStyle: const TextStyle(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        leading: _widgets.profileButton(context: context, profileImageURL: _dummyAlbum[0]),
-        bottom: PreferredSize(
+        leading: _widgets.profileButton(context: context, profileImageURL: _dummyAlbum[0], personalProfile: true),
+        bottom: const PreferredSize(
           preferredSize: Size.fromHeight(2.0),
           child: Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+            padding: EdgeInsets.only(left: 20.0, right: 20.0),
             child: Divider(
               height: 0.0,
               thickness: 0.5,
@@ -67,12 +67,12 @@ class books extends StatelessWidget{
         ],
       ),
       body: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
         children: [
-          Padding(padding: EdgeInsets.only(top: 10.0)),
+          const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: Text(
+            title: const Text(
               "Popular Books",
               style: TextStyle(
                   color: Colors.white,
@@ -81,10 +81,10 @@ class books extends StatelessWidget{
             ),
             trailing: TextButton(
               onPressed: () {},
-              child: Text("See All"),
+              child: const Text("See All"),
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.width / 1.5,
             child: ListView.builder(
@@ -95,8 +95,8 @@ class books extends StatelessWidget{
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: InkWell(
-                      onTap: () {Get.to(()=>bookDescription());},
-                      child: Container(
+                      onTap: () {Get.to(()=>bookDescription(), transition: Transition.size);},
+                      child: SizedBox(
                         width: MediaQuery.of(context).size.width / 3,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -138,7 +138,7 @@ class books extends StatelessWidget{
                                       child: Container(
                                         width: MediaQuery.of(context).size.width / 3.3,
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             topRight: Radius.circular(5.0),
                                             bottomRight: Radius.circular(5.0)
                                           ),
@@ -164,13 +164,13 @@ class books extends StatelessWidget{
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  const Text(
                                     "Book Name",
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         fontSize: 14.0, color: Colors.white),
                                   ),
-                                  Text(
+                                  const Text(
                                     "Author Name",
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
@@ -180,9 +180,9 @@ class books extends StatelessWidget{
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
-                                      Text("\$" + _dummyPrice, style: TextStyle(
+                                      Text("\$" + _dummyPrice, style: const TextStyle(
                                           fontSize: 12.0, color: Colors.white),),
-                                      Spacer(),
+                                      const Spacer(),
                                       RatingBarIndicator(
                                         rating: _dummyRating,
                                         unratedColor: Colors.white,
@@ -207,9 +207,9 @@ class books extends StatelessWidget{
                   );
                 }),
           ),
-          Padding(padding: EdgeInsets.only(top: 10.0)),
+          const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: Text(
+            title: const Text(
               "Daily Recommended",
               style: TextStyle(
                   color: Colors.white,
@@ -218,11 +218,11 @@ class books extends StatelessWidget{
             ),
             trailing: TextButton(
               onPressed: () {},
-              child: Text("See All"),
+              child: const Text("See All"),
             ),
           ),
-          Padding(padding: EdgeInsets.only(top: 10.0)),
-          Container(
+          const Padding(padding: EdgeInsets.only(top: 10.0)),
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.width / 1.5,
             child: ListView.builder(
@@ -231,10 +231,10 @@ class books extends StatelessWidget{
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                      onTap: () {Get.to(()=>bookDescription());},
+                      onTap: () {Get.to(()=>bookDescription(), transition: Transition.size);},
                       child: Container(
                         width: MediaQuery.of(context).size.width / 1.8,
-                        margin: EdgeInsets.symmetric(horizontal: 8.0),
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15.0),
                             image: DecorationImage(
@@ -252,29 +252,29 @@ class books extends StatelessWidget{
                                       borderRadius: BorderRadius.circular(20.0),
                                       color: Theme.of(context).primaryColor
                                     ),
-                                    child: Text(
+                                    child: const Text(
                                       "Category",
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontSize: 8.0, color: Colors.white),
                                     ),
                                   ),
-                                  Padding(padding: const EdgeInsets.only(top: 5.0)),
+                                  const Padding(padding: EdgeInsets.only(top: 5.0)),
                                   Text(
                                     "Author Name".toUpperCase(),
                                     overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.bold),
                                   ),
-                                  Padding(padding: const EdgeInsets.only(top: 5.0)),
-                                  Text(
-                                    "(" + "Book Name" + ")",
+                                  const Padding(padding: EdgeInsets.only(top: 5.0)),
+                                  const Text(
+                                    "(" "Book Name" ")",
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.bold),
                                   ),
-                                  Padding(padding: const EdgeInsets.only(top: 5.0)),
-                                  Text(
+                                  const Padding(padding: EdgeInsets.only(top: 5.0)),
+                                  const Text(
                                     "Description",
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
@@ -286,9 +286,9 @@ class books extends StatelessWidget{
                       ));
                 }),
           ),
-          Padding(padding: EdgeInsets.only(top: 10.0)),
+          const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: Text(
+            title: const Text(
               "Top Free",
               style: TextStyle(
                   color: Colors.white,
@@ -297,10 +297,10 @@ class books extends StatelessWidget{
             ),
             trailing: TextButton(
               onPressed: () {},
-              child: Text("See All"),
+              child: const Text("See All"),
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.width / 1.6,
             child: ListView.builder(
@@ -311,8 +311,8 @@ class books extends StatelessWidget{
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: InkWell(
-                      onTap: () {Get.to(()=>bookDescription());},
-                      child: Container(
+                      onTap: () {Get.to(()=>bookDescription(), transition: Transition.size);},
+                      child: SizedBox(
                         width: MediaQuery.of(context).size.width / 3,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -354,7 +354,7 @@ class books extends StatelessWidget{
                                         child: Container(
                                           width: MediaQuery.of(context).size.width / 3.3,
                                           decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.only(
+                                              borderRadius: const BorderRadius.only(
                                                   topRight: Radius.circular(5.0),
                                                   bottomRight: Radius.circular(5.0)
                                               ),
@@ -379,7 +379,7 @@ class books extends StatelessWidget{
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
+                                    children: const [
                                       Text(
                                         "Book Name",
                                         overflow: TextOverflow.ellipsis,
@@ -403,9 +403,9 @@ class books extends StatelessWidget{
                   );
                 }),
           ),
-          Padding(padding: EdgeInsets.only(top: 10.0)),
+          const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: Text(
+            title: const Text(
               "Newest",
               style: TextStyle(
                   color: Colors.white,
@@ -414,20 +414,20 @@ class books extends StatelessWidget{
             ),
             trailing: TextButton(
               onPressed: () {},
-              child: Text("See All"),
+              child: const Text("See All"),
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             // height: MediaQuery.of(context).size.width,
             child: ListView.builder(
                 itemCount: _dummyAlbum.length,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    onTap: () {Get.to(()=>bookDescription());},
-                      child: Container(
+                    onTap: () {Get.to(()=>bookDescription(), transition: Transition.size);},
+                      child: SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -472,7 +472,7 @@ class books extends StatelessWidget{
                                             width: MediaQuery.of(context).size.width/5,
                                             height: MediaQuery.of(context).size.width/3.5,
                                             decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.only(
+                                                borderRadius: const BorderRadius.only(
                                                     topRight: Radius.circular(5.0),
                                                     bottomRight: Radius.circular(5.0)
                                                 ),
@@ -489,8 +489,8 @@ class books extends StatelessWidget{
                                     ]
                                 ),
                               ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 5.0),
+                            const Padding(
+                              padding: EdgeInsets.only(right: 5.0),
                             ),
                              Container(
                                   padding: const EdgeInsets.all(8.0),
@@ -498,23 +498,23 @@ class books extends StatelessWidget{
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(
+                                      const Text(
                                         "Book Name",
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
                                             fontSize: 14.0, color: Colors.white),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 5.0),
+                                      const Padding(
+                                        padding: EdgeInsets.only(top: 5.0),
                                       ),
-                                      Text(
+                                      const Text(
                                         "Author Name",
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
                                             fontSize: 12.0, color: Colors.grey),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 5.0),
+                                      const Padding(
+                                        padding: EdgeInsets.only(top: 5.0),
                                       ),
                                       RatingBarIndicator(
                                         rating: _dummyRating,
@@ -527,17 +527,17 @@ class books extends StatelessWidget{
                                         itemSize: 15.0,
                                         direction: Axis.horizontal,
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 5.0),
+                                      const Padding(
+                                        padding: EdgeInsets.only(top: 5.0),
                                       ),
                                       Row(
                                         children: [
                                           Text("\$" + _dummyPrice, style: TextStyle(
                                               fontSize: 12.0, color: Theme.of(context).primaryColor),),
-                                          Padding(
-                                            padding: const EdgeInsets.only(right: 5.0),
+                                          const Padding(
+                                            padding: EdgeInsets.only(right: 5.0),
                                           ),
-                                          Text("\$" + _dummyPrice, style: TextStyle(
+                                          Text("\$" + _dummyPrice, style: const TextStyle(
                                               fontSize: 12.0, color: Colors.white, decoration: TextDecoration.lineThrough),),
                                         ],
                                       ),
@@ -551,7 +551,7 @@ class books extends StatelessWidget{
                   );
                 }),
           ),
-          Padding(padding: EdgeInsets.only(top: 30.0)),
+          const Padding(padding: EdgeInsets.only(top: 30.0)),
         ],
       ),
     );

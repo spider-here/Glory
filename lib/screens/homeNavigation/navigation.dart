@@ -1,17 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/get_core.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:glory/controllers/navigation_get.dart';
+import 'package:glory/screens/subScreens/messages/messages.dart';
 import 'package:glory/screens/homeNavigation/story.dart';
 import 'package:glory/screens/homeNavigation/streaming.dart';
 import 'books.dart';
+import 'events.dart';
 import 'more.dart';
 import 'music.dart';
 
 class navigation extends StatelessWidget {
-  PageController _navController = new PageController(initialPage: 0);
+  final PageController _navController = PageController(initialPage: 0);
   navigation_get getController = Get.put(navigation_get());
 
   @override
@@ -19,9 +18,20 @@ class navigation extends StatelessWidget {
     return GetBuilder<navigation_get>(builder: (controller) {
       return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
+        floatingActionButton: Visibility(
+          visible: getController.selectedIndex == 0? false : true,
+          child: FloatingActionButton(
+            onPressed: (){
+              Get.to(()=>messages(), transition: Transition.size);
+            },
+            child: const Icon(Icons.mail_outline_rounded),
+            foregroundColor: Colors.white,
+            backgroundColor: Theme.of(context).primaryColor,
+          ),
+        ),
         extendBody: true,
         bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), ),
+        borderRadius: const BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), ),
       child: BottomNavigationBar(
           currentIndex: getController.selectedIndex,
             onTap: (int index){
@@ -34,7 +44,7 @@ class navigation extends StatelessWidget {
         showUnselectedLabels: false,
         unselectedItemColor: Colors.grey,
         selectedItemColor: Theme.of(context).primaryColor,
-        unselectedIconTheme: IconThemeData(
+        unselectedIconTheme: const IconThemeData(
           size: 24.0
         ),
         selectedIconTheme: IconThemeData(
@@ -42,7 +52,7 @@ class navigation extends StatelessWidget {
               color: Theme.of(context).primaryColor,
         ),
 
-            items: [
+            items: const [
               BottomNavigationBarItem(
                 label: "Reels", icon: Icon(Icons.donut_large_outlined),
                   activeIcon: Icon(Icons.donut_large_rounded)
@@ -60,13 +70,18 @@ class navigation extends StatelessWidget {
                   activeIcon: Icon(Icons.book_rounded)
               ),
               BottomNavigationBarItem(
+                label: "Events", icon: Icon(Icons.event_outlined),
+                  activeIcon: Icon(Icons.event_rounded)
+              ),
+              BottomNavigationBarItem(
                 label: "More", icon: Icon(Icons.more_horiz_rounded),
               ),
+
             ],
         ),
         ),
         body: PageView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           controller: _navController,
           onPageChanged: (index) {},
           children: [
@@ -74,6 +89,7 @@ class navigation extends StatelessWidget {
             streaming(),
             music(),
             books(),
+            events(),
             more(),
           ],
         ),
@@ -81,73 +97,3 @@ class navigation extends StatelessWidget {
     });
   }
 }
-
-// appBar: AppBar(
-// systemOverlayStyle: SystemUiOverlayStyle(
-// statusBarColor: Theme.of(context).backgroundColor,
-// statusBarBrightness: Brightness.dark,
-// statusBarIconBrightness: Brightness.light,),
-// title: controller.selectedIndex!=4? Text(
-// controller.activityTitle,
-// style: TextStyle(
-// color: Colors.white,
-// fontWeight: FontWeight.bold,
-// fontSize: 14.0),
-// ):InkWell(
-// onTap: () {},
-// child: Row(
-// mainAxisAlignment: MainAxisAlignment.center,
-// crossAxisAlignment: CrossAxisAlignment.center,
-// children: [
-// Text(
-// "Username",
-// style: TextStyle(
-// color: Colors.white,
-// fontWeight: FontWeight.bold,
-// fontSize: 14.0),
-// ),
-// Icon(
-// Icons.arrow_drop_down,
-// color: Colors.white,
-// )
-// ])),
-// centerTitle: true,
-// iconTheme: IconThemeData(
-// color: Colors.white
-// ),
-// backgroundColor: Colors.transparent,
-// elevation: 0.0,
-// leading: IconButton(icon: Image.asset('assets/images/profile.png', color: Colors.white,),
-// splashColor: Theme.of(context).primaryColor,
-// splashRadius: 20.0,
-// onPressed: (){
-// Get.to(()=>profile());
-// },),
-// bottom: PreferredSize(preferredSize: Size.fromHeight(2.0),
-// child: Padding(
-// padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-// child: Divider(
-// thickness: 0.5,
-// color: Colors.grey,
-// ),
-// ),
-// ),
-// actions: [
-// IconButton(
-// onPressed: () {},
-// splashColor: Theme.of(context).primaryColor,
-// splashRadius: 20.0,
-// icon: ImageIcon(
-// AssetImage('assets/images/spin_wheel.png'),
-// color: Colors.white,
-// )),
-// IconButton(
-// onPressed: () {},
-// splashColor: Theme.of(context).primaryColor,
-// splashRadius: 20.0,
-// icon: ImageIcon(
-// AssetImage('assets/images/cart_bag.png'),
-// color: Colors.white,
-// )),
-// ],
-// ),

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -11,7 +10,7 @@ class storyMusicProfile extends StatelessWidget{
         backgroundColor: Theme.of(context).backgroundColor,
         elevation: 0.0,
         centerTitle: true,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.white
         ),
         actions: [
@@ -19,7 +18,7 @@ class storyMusicProfile extends StatelessWidget{
               onPressed: () {},
               splashColor: Theme.of(context).primaryColor,
               splashRadius: 20.0,
-              icon: Icon(
+              icon: const Icon(
                 Icons.share,
                 color: Colors.white,
               ))
@@ -35,13 +34,13 @@ class storyMusicProfile extends StatelessWidget{
           Align(
             alignment: FractionalOffset.topCenter,
               child: ListView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 children: [
                   Container(
                     padding: const EdgeInsets.all(20.0),
                     child: Row(
                       children: [
-                        Container(
+                        SizedBox(
                           width: MediaQuery.of(context).size.width/3, height: MediaQuery.of(context).size.width/3,
                           child: Stack(
                             children: [
@@ -49,7 +48,7 @@ class storyMusicProfile extends StatelessWidget{
                                 alignment: FractionalOffset.center,
                                 child: Image.asset('assets/images/sample_image.png',),
                               ),
-                              Align(
+                              const Align(
                                 alignment: FractionalOffset.center,
                                 child: Icon(Icons.play_arrow, color: Colors.white, size: 40.0,),
                               ),
@@ -57,50 +56,59 @@ class storyMusicProfile extends StatelessWidget{
                             ],
                           ),
                         ),
-                        Padding(padding: const EdgeInsets.only(right: 10.0)),
+                        const Padding(padding: EdgeInsets.only(right: 10.0)),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Title", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0, color: Colors.white),),
-                            Text("Subtitle", style: TextStyle(color: Colors.grey, fontSize: 12.0),),
-                            Text("1.7M Videos", style: TextStyle(color: Colors.grey, fontSize: 12.0),),
-                            Padding(padding: const EdgeInsets.only(top: 10.0)),
+                            const Text("Title", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0, color: Colors.white),),
+                            const Text("Subtitle", style: TextStyle(color: Colors.grey, fontSize: 12.0),),
+                            const Text("1.7M Videos", style: TextStyle(color: Colors.grey, fontSize: 12.0),),
+                            const Padding(padding: EdgeInsets.only(top: 10.0)),
                             OutlinedButton.icon(
                               onPressed: () {},
-                              icon: Icon(Icons.bookmark_outline, color: Colors.white, size: 18.0,),
-                              label: Text(
+                              icon: const Icon(Icons.bookmark_outline, color: Colors.white, size: 18.0,),
+                              label: const Text(
                                 "Add to Favorites",
                                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0),
                               ),
-                              style: ButtonStyle(
-                                foregroundColor: MaterialStateProperty.all(Colors.white),
-                              ),
+                                style: ButtonStyle(
+                                  side: MaterialStateProperty.all<BorderSide>(
+                                      const BorderSide(
+                                          width: 1.0,
+                                          color: Colors.grey
+                                      )
+                                  ),
+                                  textStyle: MaterialStateProperty.all<TextStyle>(
+                                      const TextStyle(
+                                        fontFamily: 'Poppins',
+                                      )
+                                  ),
+                                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                                )
                             ),
                           ],
                         )
                       ],
                     ),
                   ),
-                  Container(
-                    child: GridView.builder(
-                        physics: BouncingScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 2.0,
-                            crossAxisSpacing: 2.0),
-                        itemCount: 20,
-                        shrinkWrap: true,
-                        itemBuilder: (BuildContext context, int index){
-                          return Image.asset('assets/images/sample_image.png');
-                        }),
-                  ),
+                  GridView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          mainAxisSpacing: 2.0,
+                          crossAxisSpacing: 2.0),
+                      itemCount: 20,
+                      shrinkWrap: true,
+                      itemBuilder: (BuildContext context, int index){
+                        return Image.asset('assets/images/sample_image.png');
+                      }),
                 ],
               )),
           Align(
             alignment: FractionalOffset.bottomCenter,
               child: Padding(padding: const EdgeInsets.all(20.0),
-              child: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.videocam), label: Text("Use this sound"),
+              child: ElevatedButton.icon(onPressed: (){}, icon: const Icon(Icons.videocam), label: const Text("Use this sound"),
               style: ButtonStyle(
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(

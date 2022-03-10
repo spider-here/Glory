@@ -1,18 +1,23 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get.dart';
 import 'package:glory/Utils/cWidgets.dart';
+import 'package:glory/screens/subScreens/messages/chat.dart';
 
 class profile extends StatelessWidget {
   String? _profileImageURL;
-  cWidgets _widgets = new cWidgets();
+  final cWidgets _widgets = cWidgets();
+  bool personalProfile;
+  bool isFollowed = true;
+
+
+  profile({required this.personalProfile});
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
+    return personalProfile?
+    DefaultTabController(
+      length: 2,
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         extendBodyBehindAppBar: false,
@@ -26,7 +31,7 @@ class profile extends StatelessWidget {
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       "Username",
                       style: TextStyle(
@@ -40,14 +45,14 @@ class profile extends StatelessWidget {
                     )
                   ])),
           centerTitle: true,
-          iconTheme: IconThemeData(
+          iconTheme: const IconThemeData(
               color: Colors.white
           ),
           backgroundColor: Colors.black,
           elevation: 0.0,
-          bottom: PreferredSize(preferredSize: Size.fromHeight(2.0),
+          bottom: const PreferredSize(preferredSize: Size.fromHeight(2.0),
             child: Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              padding: EdgeInsets.only(left: 20.0, right: 20.0),
               child: Divider(
                 height: 0.0,
                 thickness: 0.5,
@@ -56,28 +61,14 @@ class profile extends StatelessWidget {
             ),
           ),
           actions: [
-            IconButton(
-                onPressed: () {},
-                splashColor: Theme.of(context).primaryColor,
-                splashRadius: 20.0,
-                icon: ImageIcon(
-                  AssetImage('assets/images/spin_wheel.png'),
-                  color: Colors.white,
-                )),
-            IconButton(
-                onPressed: () {},
-                splashColor: Theme.of(context).primaryColor,
-                splashRadius: 20.0,
-                icon: ImageIcon(
-                  AssetImage('assets/images/cart_bag.png'),
-                  color: Colors.white,
-                )),
+            _widgets.wheelButton(context: context),
+            _widgets.cartButton(context: context),
 
           ],
         ),
         body: SingleChildScrollView(
           primary: true,
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -95,7 +86,7 @@ class profile extends StatelessWidget {
                             ),
                     )),
               ),
-              Text(
+              const Text(
                 "@user_name",
                 style: TextStyle(
                     color: Colors.white,
@@ -117,40 +108,37 @@ class profile extends StatelessWidget {
                 children: [
                   OutlinedButton(
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "Edit Profile",
-                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     style: ButtonStyle(
                         side: MaterialStateProperty.all<BorderSide>(
-                            BorderSide(
+                            const BorderSide(
                                 width: 1.0,
-                                color: Colors.white
+                                color: Colors.grey
                             )
                         ),
                         textStyle: MaterialStateProperty.all<TextStyle>(
-                            TextStyle(
+                            const TextStyle(
                                 fontFamily: 'Poppins',
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold
                             )
                         ),
                       foregroundColor: MaterialStateProperty.all(Colors.white),
                     )
                   ),
-                  Padding(padding: const EdgeInsets.only(right: 10.0)),
+                  const Padding(padding: EdgeInsets.only(right: 10.0)),
                   OutlinedButton(
                     onPressed: () {},
-                    child: Icon(Icons.bookmark_outline),
+                    child: const Icon(Icons.bookmark_outline),
                     style: ButtonStyle(
                       side: MaterialStateProperty.all<BorderSide>(
-                          BorderSide(
+                          const BorderSide(
                               width: 1.0,
-                              color: Colors.white
+                              color: Colors.grey
                           )
                       ),
                       textStyle: MaterialStateProperty.all<TextStyle>(
-                          TextStyle(
+                          const TextStyle(
                               fontFamily: 'Poppins',
                               color: Colors.white,
                               fontWeight: FontWeight.bold
@@ -163,10 +151,10 @@ class profile extends StatelessWidget {
               ),
               TabBar(
                 indicatorSize: TabBarIndicatorSize.label,
-                indicatorColor: Colors.white,
+                indicatorColor: Theme.of(context).primaryColor,
                 enableFeedback: true,
                 onTap: (index) {},
-                tabs: [
+                tabs: const [
                   Tab(
                     icon: Icon(
                       Icons.calendar_today_rounded,
@@ -175,13 +163,7 @@ class profile extends StatelessWidget {
                   ),
                   Tab(
                     icon: Icon(
-                      Icons.filter_alt_outlined,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Tab(
-                    icon: Icon(
-                      Icons.filter_alt_outlined,
+                      Icons.favorite_outline_rounded,
                       color: Colors.white,
                     ),
                   ),
@@ -192,56 +174,183 @@ class profile extends StatelessWidget {
           height: MediaQuery.of(context).size.height/1.2,
           width: MediaQuery.of(context).size.width,
           child: TabBarView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
               children: [
               GridView.builder(
-                  physics: BouncingScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  physics: const BouncingScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       mainAxisSpacing: 2.0,
-                      crossAxisSpacing: 2.0),
+                      crossAxisSpacing: 2.0,
+                    childAspectRatio: 9/16,),
                   itemCount: 20,
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index){
-                    return Image.asset('assets/images/sample_image.png');
+                    return Image.asset('assets/images/sample_image.png', fit: BoxFit.cover,);
                   }),
         GridView.builder(
-                physics: BouncingScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                physics: const BouncingScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     mainAxisSpacing: 2.0,
-                    crossAxisSpacing: 2.0),
+                    crossAxisSpacing: 2.0,
+                  childAspectRatio: 9/16,),
                 itemCount: 5,
                 itemBuilder: (BuildContext context, int index){
-                  return Image.asset('assets/images/sample_image.png');
-                }),
-        GridView.builder(
-                physics: BouncingScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 2.0,
-                    crossAxisSpacing: 2.0),
-                itemCount: 5,
-                itemBuilder: (BuildContext context, int index){
-                  return Image.asset('assets/images/sample_image.png');
+                  return Image.asset('assets/images/sample_image.png', fit: BoxFit.cover,);
                 }),
           ]),
         ),
-        // Container(
-        //   height: MediaQuery.of(context).size.height/1.2,
-        //   width: MediaQuery.of(context).size.width,
-        //   child:PageView(
-        //         physics: NeverScrollableScrollPhysics(),
-        //         controller: _tabBodyController,
-        //         onPageChanged: (index) {},
-        //         children: [
-        //
-        //         ],
-        //   )),
             ],
           ),
         ),
       ),
-    );
+    )
+        :
+    Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
+        extendBodyBehindAppBar: false,
+        appBar: AppBar(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Theme.of(context).backgroundColor,
+            statusBarBrightness: Brightness.dark,
+            statusBarIconBrightness: Brightness.light,),
+          title: InkWell(
+              onTap: () {},
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Username",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14.0),
+                    ),
+                    Icon(
+                      Icons.arrow_drop_down,
+                      color: Colors.white,
+                    )
+                  ])),
+          centerTitle: true,
+          iconTheme: const IconThemeData(
+              color: Colors.white
+          ),
+          backgroundColor: Colors.black,
+          elevation: 0.0,
+          bottom: const PreferredSize(preferredSize: Size.fromHeight(2.0),
+            child: Padding(
+              padding: EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Divider(
+                height: 0.0,
+                thickness: 0.5,
+                color: Colors.grey,
+              ),
+            ),
+          ),
+          actions: [
+            _widgets.wheelButton(context: context),
+            _widgets.cartButton(context: context),
+          ],
+        ),
+        body: SingleChildScrollView(
+          primary: true,
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 40.0,
+                    child: ClipOval(
+                      child: _profileImageURL != null
+                          ? Image.network(_profileImageURL!)
+                          : Image.asset(
+                        'assets/images/sample_image.png',
+                      ),
+                    )),
+              ),
+              const Text(
+                "@user_name",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14.0),
+              ),
+              Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: _widgets.profilePageStats(
+                      totalFollowers: "14",
+                      totalFollowing: "38",
+                      totalLikes: "91",
+                      onTapFollowers: () {},
+                      onTapFollowing: () {},
+                      onTapLikes: () {})),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  OutlinedButton(
+                      onPressed: ()=> isFollowed? Get.to(()=>chat(), transition: Transition.size) : (){},
+                      child: isFollowed?const Text(
+                        "Message",
+                      ):const Text("Follow"),
+                      style: ButtonStyle(
+                        side: MaterialStateProperty.all<BorderSide>(
+                            const BorderSide(
+                                width: 1.0,
+                                color: Colors.grey
+                            )
+                        ),
+                        textStyle: MaterialStateProperty.all<TextStyle>(
+                            const TextStyle(
+                              fontFamily: 'Poppins',
+                            )
+                        ),
+                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                      )
+                  ),
+                  const Padding(padding: EdgeInsets.only(right: 10.0)),
+                  OutlinedButton(
+                      onPressed: () {},
+                      child: const Icon(Icons.keyboard_arrow_down_rounded),
+                      style: ButtonStyle(
+                        side: MaterialStateProperty.all<BorderSide>(
+                            const BorderSide(
+                                width: 1.0,
+                                color: Colors.grey
+                            )
+                        ),
+                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                      )
+                  ),
+                ],
+              ),
+              const Padding(padding: EdgeInsets.only(top: 10.0)),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child:
+                      GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 2.0,
+                              crossAxisSpacing: 2.0,
+                            childAspectRatio: 9/16,),
+                          itemCount: 20,
+                          shrinkWrap: true,
+                          itemBuilder: (BuildContext context, int index){
+                            return Image.asset('assets/images/sample_image.png', fit: BoxFit.cover,);
+                          }),
+              ),
+            ],
+          ),
+        ),
+    )
+    ;
   }
 }

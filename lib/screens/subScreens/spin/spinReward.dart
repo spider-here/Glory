@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -6,7 +5,7 @@ import 'package:get/get_navigation/src/extension_navigation.dart';
 
 class spinReward extends StatelessWidget{
 
-  String _dummyReward = "Dummy Reward";
+  final String _dummyReward = "Dummy Reward";
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +19,9 @@ class spinReward extends StatelessWidget{
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: Container(
+      body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: double.maxFinite,
         child: Column(
@@ -32,7 +31,7 @@ class spinReward extends StatelessWidget{
                   Text(
                     "You have won $_dummyReward from Glory World.",
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white, fontSize: 14.0),
+                    style: const TextStyle(color: Colors.white, fontSize: 14.0),
                   ),
                   Card(
                     shape: RoundedRectangleBorder(
@@ -45,7 +44,7 @@ class spinReward extends StatelessWidget{
                       width: MediaQuery.of(context).size.width/1.5,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.0),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                               image: NetworkImage(
                                 "https://images.pexels.com/photos/853151/pexels-photo-853151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
                               ),
@@ -57,7 +56,7 @@ class spinReward extends StatelessWidget{
                         height: 50.0,
                         margin: const EdgeInsets.all(20.0),
                         child: ElevatedButton(
-                            onPressed: () {Get.back();}, child: Text("Claim Now!"))),
+                            onPressed: () {Get.back();}, child: const Text("Claim Now!"))),
                 ],
               ),
             ),

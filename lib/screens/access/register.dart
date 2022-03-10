@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -13,8 +12,8 @@ class register extends StatelessWidget{
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         centerTitle: true,
-        title: Text("Create an Account", style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold),),
-        iconTheme: IconThemeData(
+        title: const Text("Create an Account", style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold),),
+        iconTheme: const IconThemeData(
           color: Colors.white
         ),
         systemOverlayStyle: SystemUiOverlayStyle(
@@ -32,13 +31,13 @@ class register extends StatelessWidget{
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Spacer(flex: 5),
+                const Spacer(flex: 5),
                 Container(
                   height: 100.0,
                   width: 100.0,
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage('assets/images/logo.jpeg'),
                       fit: BoxFit.fitHeight
                     ),
@@ -47,55 +46,55 @@ class register extends StatelessWidget{
                   ),
                 ),
                 // Padding(padding: const EdgeInsets.only(top: 50.0)),
-                Spacer(flex: 5),
+                const Spacer(flex: 5),
                 TextField(
                   style: TextStyle(color: Theme.of(context).primaryColor),
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     label: Text("Phone Number", style: TextStyle(color: Colors.white,)),
                     prefixIcon: Icon(Icons.phone_iphone_outlined, color: Colors.white,),
                   ),
                 ),
                 // Padding(padding: const EdgeInsets.only(top: 30.0)),
-                Spacer(flex: 1),
+                const Spacer(flex: 1),
                 TextField(
                   style: TextStyle(color: Theme.of(context).primaryColor),
                   keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     label: Text("Email", style: TextStyle(color: Colors.white,)),
                     prefixIcon: Icon(Icons.mail_outline, color: Colors.white,),
                   ),
                 ),
                 // Padding(padding: const EdgeInsets.only(top: 30.0)),
-                Spacer(flex: 1),
+                const Spacer(flex: 1),
 
                 TextField(
                   obscureText: true,
                   style: TextStyle(color: Theme.of(context).primaryColor),
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     label: Text("Password", style: TextStyle(color: Colors.white,)),
                     prefixIcon: Icon(Icons.lock_outline, color: Colors.white,),
                   ),
                 ),
                 // Padding(padding: const EdgeInsets.only(top: 50.0)),
-                Spacer(flex: 5),
+                const Spacer(flex: 5),
                 SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: 40.0,
-                    child: ElevatedButton(onPressed: (){}, child: Text("Sign Up"),)),
+                    child: ElevatedButton(onPressed: (){}, child: const Text("Sign Up"),)),
                 // Padding(padding: const EdgeInsets.only(top: 15.0)),
-                Spacer(flex: 1),
+                const Spacer(flex: 1),
                 SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: 40.0,
-                    child: OutlinedButton(onPressed: (){}, child: Text("Continue as a Guest",),)),
-                Spacer(flex: 10),
-                Container(
+                    child: OutlinedButton(onPressed: (){}, child: const Text("Continue as a Guest",),)),
+                const Spacer(flex: 10),
+                SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Already have an account? ", style: TextStyle( fontSize: 14.0, color: Colors.white),),
+                        const Text("Already have an account? ", style: TextStyle( fontSize: 14.0, color: Colors.white),),
                         InkWell(onTap: ()=>Get.back(), child: Text("Log in Now", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0, color: Theme.of(context).primaryColor),))
                       ],
                     )

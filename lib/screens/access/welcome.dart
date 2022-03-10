@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -45,7 +44,7 @@ class welcome extends StatelessWidget {
                                 child: Container(
                                   width: 213.28,
                                   height: 291.85,
-                                  color: Color(0xFF406752),
+                                  color: const Color(0xFF406752),
                                 )),
                           ),
                           Align(
@@ -66,16 +65,16 @@ class welcome extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(20.0, 40.0, 20.0, 20.0),
                       child: RichText(text: TextSpan(
                           children: [
-                            TextSpan(text: "Experience Social Media\n", style: TextStyle(color: Colors.white, fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold),),
-                            TextSpan(text: "Your Way With ", style: TextStyle(color: Colors.white, fontSize: 20.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
+                            const TextSpan(text: "Experience Social Media\n", style: TextStyle(color: Colors.white, fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold),),
+                            const TextSpan(text: "Your Way With ", style: TextStyle(color: Colors.white, fontSize: 20.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
                             TextSpan(text: "Glory World", style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 20.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
                           ]
                       ),
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
+                    const Padding(
+                      padding: EdgeInsets.all(20.0),
                       child: Text(
                         "Use social media your way and let your followers use it their way."
                             " You can have the experience you want without ever using another"
@@ -84,8 +83,8 @@ class welcome extends StatelessWidget {
                         style: TextStyle(color: Colors.white, fontSize: 12.0),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 30.0),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 30.0),
                     ),
 
                     // Padding(
@@ -100,7 +99,7 @@ class welcome extends StatelessWidget {
                   width: MediaQuery.of(context).size.width/1.2,
                   height: 40.0,
                   margin: const EdgeInsets.only(bottom: 20.0),
-                  child: ElevatedButton(onPressed: ()=>Get.off(login()), child: Text("Get Started"),
+                  child: ElevatedButton(onPressed: ()=>Get.off(login()), child: const Text("Get Started"),
                     style: ButtonStyle(
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
@@ -108,7 +107,7 @@ class welcome extends StatelessWidget {
                             )
                         ),
                       textStyle: MaterialStateProperty.all<TextStyle>(
-                        TextStyle(
+                        const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Poppins'
                         )

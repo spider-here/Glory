@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -24,7 +23,7 @@ class login extends StatelessWidget{
       ),
     ),
     body:SingleChildScrollView(
-        child:Container(
+        child:SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Stack(
@@ -39,13 +38,13 @@ class login extends StatelessWidget{
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Spacer(flex: 10,),
+                      const Spacer(flex: 10,),
                       Container(
                         height: 80.0,
                         width: 80.0,
                         padding: const EdgeInsets.all(10.0),
                         decoration: BoxDecoration(
-                          image: DecorationImage(
+                          image: const DecorationImage(
                               image: AssetImage('assets/images/logo.jpeg'),
                               fit: BoxFit.fitHeight
                           ),
@@ -55,53 +54,53 @@ class login extends StatelessWidget{
                         ),
                       ),
                       // Padding(padding: const EdgeInsets.only(top: 20.0)),
-                      Spacer(flex: 1,),
-                      Text("Welcome to GLORY", style: TextStyle(color: Colors.white,
+                      const Spacer(flex: 1,),
+                      const Text("Welcome to GLORY", style: TextStyle(color: Colors.white,
                           fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold),),
                       // Padding(padding: const EdgeInsets.only(top: 10.0)),
-                      Spacer(flex: 1,),
-                      Text(
+                      const Spacer(flex: 1,),
+                      const Text(
                         "Sign in to continue",
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.white, fontSize: 14.0),
                       ),
                       // Padding(padding: const EdgeInsets.only(top: 50.0)),
-                      Spacer(flex: 6,),
+                      const Spacer(flex: 6,),
                       TextField(
                         style: TextStyle(color: Theme.of(context).primaryColor),
                         keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           label: Text("Phone Number", style: TextStyle(color: Colors.white,)),
                           prefixIcon: Icon(Icons.phone_iphone_outlined, color: Colors.white,),
                         ),
                       ),
                       // Padding(padding: const EdgeInsets.only(top: 30.0)),
-                      Spacer(flex: 1,),
+                      const Spacer(flex: 1,),
                       TextField(
                         obscureText: true,
                         style: TextStyle(color: Theme.of(context).primaryColor),
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           label: Text("Password", style: TextStyle(color: Colors.white,)),
                           prefixIcon: Icon(Icons.lock_outline, color: Colors.white,),
                         ),
                       ),
-                      Spacer(flex: 1,),
+                      const Spacer(flex: 1,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           InkWell(
                             onTap: ()=>Get.to(()=>forgotPassword()),
-                            child: Text("Forgot Password?", style: TextStyle(fontSize: 12.0, color: Colors.grey),),
+                            child: const Text("Forgot Password?", style: TextStyle(fontSize: 12.0, color: Colors.grey),),
                           )
                         ],
                       ),
                       // Padding(padding: const EdgeInsets.only(top: 50.0)),
-                      Spacer(flex: 6,),
+                      const Spacer(flex: 6,),
                       SizedBox(
                           width: MediaQuery.of(context).size.width,
                           height: 40.0,
-                          child: ElevatedButton(onPressed: ()=>Get.off(()=>navigation()), child: Text("Sign In"),
+                          child: ElevatedButton(onPressed: ()=>Get.off(()=>navigation()), child: const Text("Sign In"),
                             style: ButtonStyle(
                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
@@ -110,7 +109,7 @@ class login extends StatelessWidget{
                                 )
                             ),)),
                       // Padding(padding: const EdgeInsets.only(top: 15.0)),
-                      Spacer(flex: 1,),
+                      const Spacer(flex: 1,),
                       SizedBox(
                           width: MediaQuery.of(context).size.width,
                           height: 40.0,
@@ -123,16 +122,16 @@ class login extends StatelessWidget{
                                         borderRadius: BorderRadius.circular(10.0)
                                     )
                                 )
-                            ), label: Text("Sign In with Apple"),
+                            ), label: const Text("Sign In with Apple"),
                             icon: Image.asset("assets/images/apple.png",
                              width: 20.0, height: 20.0, color: Colors.black,),)),
                       // Padding(padding: const EdgeInsets.only(top: 15.0)),
-                      Spacer(flex: 1,),
+                      const Spacer(flex: 1,),
                       SizedBox(
                     width: MediaQuery.of(context).size.width,
                           height: 40.0,
-                    child: OutlinedButton(onPressed: ()=>Get.off(()=>navigation()), child: Text("Continue as a Guest",),)),
-                      Spacer(flex: 10,),
+                    child: OutlinedButton(onPressed: ()=>Get.off(()=>navigation()), child: const Text("Continue as a Guest",),)),
+                      const Spacer(flex: 10,),
                     ],
                   ),
               ),
@@ -146,7 +145,7 @@ class login extends StatelessWidget{
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't have an account? ", style: TextStyle( fontSize: 14.0, color: Colors.white,),),
+                    const Text("Don't have an account? ", style: TextStyle( fontSize: 14.0, color: Colors.white,),),
                     InkWell(onTap: ()=>Get.to(()=>register()), child: Text("Register Now", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0, color: Theme.of(context).primaryColor),))
                   ],
                 )

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:glory/screens/access/splash.dart';
 
 void main() {
-  runApp(new GetMaterialApp(
+  runApp(GetMaterialApp(
     title: "Glory",
     home: splash(),
     theme: ThemeData(
@@ -23,7 +23,7 @@ void main() {
             foregroundColor: MaterialStateProperty.all(Colors.white),
             backgroundColor: MaterialStateProperty.all(appPrimary),
             textStyle: MaterialStateProperty.all<TextStyle>(
-                TextStyle(
+                const TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold
                 )
@@ -52,7 +52,7 @@ void main() {
           )
         )
       ),
-      inputDecorationTheme: InputDecorationTheme(
+      inputDecorationTheme: const InputDecorationTheme(
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
               color: Colors.grey
@@ -62,14 +62,13 @@ void main() {
               color: Colors.white
           ),),
         isDense: true,
-          contentPadding: const EdgeInsets.all(0.0),
-
+          contentPadding: EdgeInsets.all(0.0),
       )
     ),
     debugShowCheckedModeBanner: false,
   ));
 }
-MaterialColor appPrimary = MaterialColor(0xFF81DDAA, <int, Color>{
+MaterialColor appPrimary = const MaterialColor(0xFF81DDAA, <int, Color>{
   50: Color.fromRGBO(129, 221, 170, 1),
   100: Color.fromRGBO(129, 221, 170, 1),
   200: Color.fromRGBO(129, 221, 170, 1),

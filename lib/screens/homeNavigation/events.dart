@@ -1,26 +1,72 @@
-import 'package:flutter/cupertino.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:glory/Utils/cWidgets.dart';
 import 'package:glory/screens/subScreens/eventDescription.dart';
+import 'package:glory/screens/subScreens/search.dart';
 
 class events extends StatelessWidget{
 
-  List<String> _dummyAlbum = [
+  final List<String> _dummyAlbum = [
     "https://images.pexels.com/photos/853151/pexels-photo-853151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=464&q=80",
-    "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80),"
-        "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
+    "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
   ];
+
+  final cWidgets _widgets = cWidgets();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView(
-        physics: BouncingScrollPhysics(),
+    return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: Theme.of(context).backgroundColor,
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.light,
+        ),
+        title: InkWell(
+            onTap: () {
+              Get.to(() => search(), fullscreenDialog: true);
+            },
+            child: const SizedBox(
+                width: double.maxFinite,
+                child: AutoSizeText(
+                  "Events",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 18.0),
+                  maxLines: 1,
+                ))),
+        centerTitle: true,
+        titleTextStyle: const TextStyle(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        leading: _widgets.profileButton(context: context, profileImageURL: _dummyAlbum[0], personalProfile: true),
+        bottom: const PreferredSize(
+          preferredSize: Size.fromHeight(2.0),
+          child: Padding(
+            padding: EdgeInsets.only(left: 20.0, right: 20.0),
+            child: Divider(
+              height: 0.0,
+              thickness: 0.5,
+              color: Colors.grey,
+            ),
+          ),
+        ),
+        actions: [
+          _widgets.wheelButton(context: context),
+          _widgets.cartButton(context: context),
+        ],
+      ),
+      body: ListView(
+        physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
         children: [
-          ListTile(
+          const ListTile(
             title: Text(
               "Trending Events near you",
               style: TextStyle(
@@ -41,7 +87,7 @@ class events extends StatelessWidget{
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: InkWell(
-                      onTap: (){Get.to(()=>eventDescription());},
+                      onTap: (){Get.to(()=>eventDescription(), transition: Transition.size);},
                       child: Container(
                         width: MediaQuery.of(context).size.width/1.2,
                         decoration: BoxDecoration(
@@ -59,13 +105,13 @@ class events extends StatelessWidget{
                                 width: 60.0,
                                 height: 25.0,
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(20.0),
                                         bottomRight: Radius.circular(20.0)
                                     ),
                                     color: Theme.of(context).primaryColor
                                 ),
-                                child: Center(child: Text("Top", style: TextStyle(color: Colors.white, fontSize: 12.0),)),
+                                child: const Center(child: Text("Top", style: TextStyle(color: Colors.white, fontSize: 12.0),)),
                               ),
                             ),
                             Align(
@@ -76,20 +122,20 @@ class events extends StatelessWidget{
                                   width: 25.0,
                                   height: 30.0,
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(10.0),
                                           bottomRight: Radius.circular(10.0)
                                       ),
                                       color: Theme.of(context).primaryColor
                                   ),
-                                  child: Center(child: Icon(Icons.bookmark_outline, color: Colors.white, size: 20.0,)),
+                                  child: const Center(child: Icon(Icons.bookmark_outline, color: Colors.white, size: 20.0,)),
                                 ),
                               ),
                             ),
                             Align(
                               alignment: FractionalOffset.bottomCenter,
                               child: Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(20.0),
@@ -98,8 +144,8 @@ class events extends StatelessWidget{
                                 ),
                                 child: ListTile(
                                   dense: true,
-                                  title: Text("This is the title", style: TextStyle(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
-                                  subtitle: Text("This is the subtitle",  overflow: TextOverflow.ellipsis),
+                                  title: const Text("This is the title", style: TextStyle(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
+                                  subtitle: const Text("This is the subtitle",  overflow: TextOverflow.ellipsis),
                                   trailing: Text("\$99.99", style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold)),),
                               ),
                             ),
@@ -111,7 +157,7 @@ class events extends StatelessWidget{
                 }),
           ),
           ListTile(
-            title: Text(
+            title: const Text(
               "Category",
               style: TextStyle(
                   color: Colors.white,
@@ -120,7 +166,7 @@ class events extends StatelessWidget{
             ),
             trailing: TextButton(
               onPressed: () {},
-              child: Text("See All"),
+              child: const Text("See All"),
             ),
           ),
           Container(
@@ -135,7 +181,7 @@ class events extends StatelessWidget{
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: InkWell(
-                      onTap: (){Get.to(()=>eventDescription());},
+                      onTap: (){Get.to(()=>eventDescription(), transition: Transition.size);},
                       child: Container(
                         width: MediaQuery.of(context).size.width/4,
                         decoration: BoxDecoration(
@@ -151,14 +197,14 @@ class events extends StatelessWidget{
                             width: double.maxFinite,
                             height: 30.0,
                             padding: const EdgeInsets.all(5.0),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(20.0),
                                   bottomRight: Radius.circular(20.0)
                               ),
                             ),
-                            child: Center(child: Text("Title", overflow: TextOverflow.ellipsis,)),
+                            child: const Center(child: Text("Title", overflow: TextOverflow.ellipsis,)),
                           ),
                         ),
                       ),
@@ -167,7 +213,7 @@ class events extends StatelessWidget{
                 }),
           ),
           ListTile(
-            title: Text(
+            title: const Text(
               "Upcoming Events",
               style: TextStyle(
                   color: Colors.white,
@@ -176,7 +222,7 @@ class events extends StatelessWidget{
             ),
             trailing: TextButton(
               onPressed: () {},
-              child: Text("See All"),
+              child: const Text("See All"),
             ),
           ),
           Container(
@@ -191,7 +237,7 @@ class events extends StatelessWidget{
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: InkWell(
-                      onTap: (){Get.to(()=>eventDescription());},
+                      onTap: (){Get.to(()=>eventDescription(), transition: Transition.size);},
                       child: Container(
                         width: MediaQuery.of(context).size.width/2.5,
                         decoration: BoxDecoration(
@@ -204,14 +250,14 @@ class events extends StatelessWidget{
                         child: Align(
                           alignment: FractionalOffset.bottomCenter,
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(20.0),
                                   bottomRight: Radius.circular(20.0)
                               ),
                             ),
-                            child: ListTile(
+                            child: const ListTile(
                               dense: true,
                               title: Text("Title", style: TextStyle(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
                               subtitle: Text("Subtitle",  overflow: TextOverflow.ellipsis),
@@ -224,7 +270,7 @@ class events extends StatelessWidget{
                 }),
           ),
           ListTile(
-            title: Text(
+            title: const Text(
               "Nearest City",
               style: TextStyle(
                   color: Colors.white,
@@ -233,7 +279,7 @@ class events extends StatelessWidget{
             ),
             trailing: TextButton(
               onPressed: () {},
-              child: Text("See All"),
+              child: const Text("See All"),
             ),
           ),
           Container(
@@ -248,7 +294,7 @@ class events extends StatelessWidget{
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: InkWell(
-                      onTap: (){Get.to(()=>eventDescription());},
+                      onTap: (){Get.to(()=>eventDescription(), transition: Transition.size);},
                       child: Container(
                         width: MediaQuery.of(context).size.width/4,
                         decoration: BoxDecoration(
@@ -264,14 +310,14 @@ class events extends StatelessWidget{
                             width: double.maxFinite,
                             height: 30.0,
                             padding: const EdgeInsets.all(5.0),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(20.0),
                                   bottomRight: Radius.circular(20.0)
                               ),
                             ),
-                            child: Center(child: Text("Title", overflow: TextOverflow.ellipsis,)),
+                            child: const Center(child: Text("Title", overflow: TextOverflow.ellipsis,)),
                           ),
                         ),
                       ),

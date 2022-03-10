@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
-import 'package:glory/screens/subScreens/checkoutSuccess.dart';
+import 'package:glory/screens/subScreens/checkout/checkoutSuccess.dart';
 
 class checkout extends StatelessWidget{
 
-  String _dummyPrice = "54.99";
+  final String _dummyPrice = "54.99";
 
 
   @override
@@ -26,21 +25,21 @@ class checkout extends StatelessWidget{
           ),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
         ),
-        body: Container(
+        body: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child:Container(
+            physics: const BouncingScrollPhysics(),
+            child:SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.width/1.5,
                   child: Stack(
@@ -58,7 +57,7 @@ class checkout extends StatelessWidget{
                         alignment: FractionalOffset.center,
                         child: ListTile(
                           dense: true,
-                          title: Text(
+                          title: const Text(
                             "Checkout",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -83,7 +82,7 @@ class checkout extends StatelessWidget{
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15.0),
                           ),
-                          child: Container(
+                          child: SizedBox(
                             width: MediaQuery.of(context).size.width / 1.2,
                             child: TabBar(
                               labelColor: Colors.white,
@@ -94,7 +93,7 @@ class checkout extends StatelessWidget{
                               ),
                               indicatorSize: TabBarIndicatorSize.tab,
                               tabs: [
-                              Tab(
+                              const Tab(
                                 icon: Icon(Icons.credit_card_rounded),
                                 text: "Credit Card",
                               ),
@@ -114,8 +113,8 @@ class checkout extends StatelessWidget{
                     ],
                   ),
                 ),
-                Padding(padding: const EdgeInsets.only(top: 10.0)),
-                ListTile(
+                const Padding(padding: EdgeInsets.only(top: 10.0)),
+                const ListTile(
                   dense: true,
                   title: Text(
                     "Card Number",
@@ -134,21 +133,31 @@ class checkout extends StatelessWidget{
                   ),
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Center(
+                    child: const Center(
                       child: TextField(
+                        textAlignVertical: TextAlignVertical.center,
+                        maxLength: 16,
+                        maxLengthEnforcement: MaxLengthEnforcement.enforced,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           isDense: true,
+                          hintText: "1111 2222 3333 4444",
+                          counterText: "",
                           contentPadding: EdgeInsets.all(10.0),
                           border: InputBorder.none,
+                          focusedErrorBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
                           suffixIcon: Icon(Icons.credit_card_rounded),
                         ),
                       ),
                     ),
                   )
                 ),
-                Padding(padding: const EdgeInsets.only(top: 10.0)),
-                ListTile(
+                const Padding(padding: EdgeInsets.only(top: 10.0)),
+                const ListTile(
                   dense: true,
                   title: Text(
                     "Card Holder Name",
@@ -167,11 +176,18 @@ class checkout extends StatelessWidget{
                   ),
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Center(
+                    child: const Center(
                       child: TextField(
+                        textAlignVertical: TextAlignVertical.center,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
                           isDense: true,
+                          hintText: "John Helen",
+                          focusedErrorBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
                           contentPadding: EdgeInsets.all(10.0),
                           border: InputBorder.none,
                         ),
@@ -188,41 +204,89 @@ class checkout extends StatelessWidget{
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "Expiry Date",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                                 fontSize: 16.0),
                           ),
-                          Card(
-                              color: Colors.white,
-                              elevation: 8.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                                width: MediaQuery.of(context).size.width/2.5,
-                                child: Center(
-                                  child: TextField(
-                                    keyboardType: TextInputType.text,
-                                    decoration: InputDecoration(
-                                      isDense: true,
-                                      contentPadding: EdgeInsets.all(10.0),
-                                      border: InputBorder.none,
-                                    ),
+                          Row(
+                            children: [
+                              Card(
+                                  color: Colors.white,
+                                  elevation: 8.0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
                                   ),
-                                ),
-                              )
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                                    width: MediaQuery.of(context).size.width/6,
+                                    child: const Center(
+                                      child: TextField(
+                                        maxLength: 2,
+                                        maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                                        textAlign: TextAlign.center,
+                                        textAlignVertical: TextAlignVertical.center,
+                                        keyboardType: TextInputType.text,
+                                        decoration: InputDecoration(
+                                          isDense: true,
+                                          hintText: "DD",
+                                          counterText: "",
+                                          focusedErrorBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          disabledBorder: InputBorder.none,
+                                          enabledBorder: InputBorder.none,
+                                          contentPadding: EdgeInsets.all(10.0),
+                                          border: InputBorder.none,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                              ),
+                              const Text("/", style: TextStyle(color: Colors.white, fontSize: 18.0),),
+                              Card(
+                                  color: Colors.white,
+                                  elevation: 8.0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                                    width: MediaQuery.of(context).size.width/4,
+                                    child: const Center(
+                                      child: TextField(
+                                        maxLength: 4,
+                                        maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                                        textAlignVertical: TextAlignVertical.center,
+                                        textAlign: TextAlign.center,
+                                        keyboardType: TextInputType.text,
+                                        decoration: InputDecoration(
+                                          isDense: true,
+                                          hintText: "YYYY",
+                                          counterText: "",
+                                          focusedErrorBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          disabledBorder: InputBorder.none,
+                                          enabledBorder: InputBorder.none,
+                                          contentPadding: EdgeInsets.all(10.0),
+                                          border: InputBorder.none,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "CVV/CVC",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -236,13 +300,24 @@ class checkout extends StatelessWidget{
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
                               child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                                width: MediaQuery.of(context).size.width/2.5,
-                                child: Center(
+                                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                                width: MediaQuery.of(context).size.width/5,
+                                child: const Center(
                                   child: TextField(
+                                    textAlign: TextAlign.center,
+                                    maxLength: 3,
+                                    textAlignVertical: TextAlignVertical.center,
+                                    maxLengthEnforcement: MaxLengthEnforcement.enforced,
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                       isDense: true,
+                                      counterText: "",
+                                      hintText: "XXX",
+                                      focusedErrorBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
                                       contentPadding: EdgeInsets.all(10.0),
                                       border: InputBorder.none,
                                     ),
@@ -255,10 +330,10 @@ class checkout extends StatelessWidget{
                     ],
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 50.0),
-                  child: Center(
+                  child: const Center(
                     child: Text("We'll send you payment details to your email after the successful payment.",
                       style: TextStyle(
                         fontSize: 10.0,
@@ -274,8 +349,9 @@ class checkout extends StatelessWidget{
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: ElevatedButton.icon(
                         onPressed: () {Get.off(()=>checkoutSuccess(), transition: Transition.rightToLeft, fullscreenDialog: true);},
-                        label: Text("Proceed to Pay"),
-                icon: Icon(Icons.lock_rounded),)),
+                        label: const Text("Proceed to Pay"),
+                icon: const Icon(Icons.lock_rounded),)),
+                const Padding(padding: EdgeInsets.only(bottom: 20.0)),
               ],
             ),
           ),

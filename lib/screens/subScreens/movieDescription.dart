@@ -1,16 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 
 class movieDescription extends StatelessWidget {
-  String _movieName = "Movie Name";
-  String _videoMaxQuality = "4K";
-  String _movieTotalMinutes = "165";
-  String _movieRating = "8.5";
-  String _movieReleaseDate = "December 12, 2021";
-  String _movieDescription =
+  final String _movieName = "Movie Name";
+  final String _videoMaxQuality = "4K";
+  final String _movieTotalMinutes = "165";
+  final String _movieRating = "8.5";
+  final String _movieReleaseDate = "December 12, 2021";
+  final String _movieDescription =
       "Lorem Ipsum is simply dummy text of the printing and typesetting"
       " industry. Lorem Ipsum has been the industry's standard dummy text ever since"
       " the 1500s, when an unknown printer took a galley of type and scrambled it to"
@@ -19,8 +18,8 @@ class movieDescription extends StatelessWidget {
       " popularised in the 1960s with the release of Letraset sheets containing Lorem "
       "Ipsum passages, and more recently with desktop publishing software like Aldus "
       "PageMaker including versions of Lorem Ipsum.";
-  List<String> _movieGenre = ["Action", "Comedy", "Romance"];
-  List<String> _relatedMoviesUrls = [
+  final List<String> _movieGenre = ["Action", "Comedy", "Romance"];
+  final List<String> _relatedMoviesUrls = [
     "https://images.pexels.com/photos/853151/pexels-photo-853151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80),",
     "https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=464&q=80",
@@ -39,36 +38,36 @@ class movieDescription extends StatelessWidget {
             statusBarIconBrightness: Brightness.light,),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
-          iconTheme: IconThemeData(color: Colors.white),
-          actionsIconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
+          actionsIconTheme: const IconThemeData(color: Colors.white),
         ),
         body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    image: DecorationImage(
+                    image: const DecorationImage(
                         image: NetworkImage(
                           "https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=464&q=80",
                         ),
                         fit: BoxFit.cover),
                     borderRadius: BorderRadius.circular(20.0)),
               ),
-              Padding(padding: const EdgeInsets.only(top: 20.0)),
+              const Padding(padding: EdgeInsets.only(top: 20.0)),
               ListTile(
                 title: Row(
                   children: [
                     Text(
                       _movieName,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0),
                     ),
-                    Padding(padding: const EdgeInsets.only(left: 10.0)),
+                    const Padding(padding: EdgeInsets.only(left: 10.0)),
                     Container(
                         padding: const EdgeInsets.all(2.0),
                         decoration: BoxDecoration(
@@ -78,41 +77,41 @@ class movieDescription extends StatelessWidget {
                                 Border.all(color: Colors.white, width: 0.5)),
                         child: Text(
                           _videoMaxQuality,
-                          style: TextStyle(color: Colors.white, fontSize: 10.0),
+                          style: const TextStyle(color: Colors.white, fontSize: 10.0),
                         )),
                   ],
                 ),
                 subtitle: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
                       child: Icon(
                         Icons.access_time_outlined,
                         color: Colors.grey,
                         size: 20.0,
                       ),
                     ),
-                    Padding(padding: const EdgeInsets.only(left: 4.0)),
+                    const Padding(padding: EdgeInsets.only(left: 4.0)),
                     Text(
                       _movieTotalMinutes + " minutes",
-                      style: TextStyle(color: Colors.grey, fontSize: 12.0),
+                      style: const TextStyle(color: Colors.grey, fontSize: 12.0),
                     ),
-                    Padding(padding: const EdgeInsets.only(left: 15.0)),
-                    Icon(
+                    const Padding(padding: EdgeInsets.only(left: 15.0)),
+                    const Icon(
                       Icons.star_rate_outlined,
                       color: Colors.grey,
                       size: 20.0,
                     ),
-                    Padding(padding: const EdgeInsets.only(left: 4.0)),
+                    const Padding(padding: EdgeInsets.only(left: 4.0)),
                     Text(
                       _movieRating,
-                      style: TextStyle(color: Colors.grey, fontSize: 12.0),
+                      style: const TextStyle(color: Colors.grey, fontSize: 12.0),
                     )
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              const Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20.0),
                 child: Divider(
                   color: Colors.grey,
                 ),
@@ -120,15 +119,15 @@ class movieDescription extends StatelessWidget {
               ListTile(
                 title: Row(
                   children: [
-                    Container(
+                    SizedBox(
                         width: MediaQuery.of(context).size.width / 2.2,
-                        child: Text(
+                        child: const Text(
                           "Release date",
                           style: TextStyle(color: Colors.white, fontSize: 16.0),
                         )),
-                    Container(
+                    SizedBox(
                         width: MediaQuery.of(context).size.width / 2.2,
-                        child: Text(
+                        child: const Text(
                           "Genre",
                           style: TextStyle(color: Colors.white, fontSize: 16.0),
                         )),
@@ -136,17 +135,17 @@ class movieDescription extends StatelessWidget {
                 ),
                 subtitle: Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: MediaQuery.of(context).size.width / 2.2,
                       child: Text(
                         _movieReleaseDate,
-                        style: TextStyle(color: Colors.grey, fontSize: 12.0),
+                        style: const TextStyle(color: Colors.grey, fontSize: 12.0),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: MediaQuery.of(context).size.width / 2.2,
                       child: GridView.builder(
-                        padding: EdgeInsets.only(top: 10.0),
+                        padding: const EdgeInsets.only(top: 10.0),
                         itemCount: _movieGenre.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
@@ -159,11 +158,11 @@ class movieDescription extends StatelessWidget {
                                 child: Text(
                               _movieGenre[index],
                               style:
-                                  TextStyle(color: Colors.grey, fontSize: 12.0),
+                                  const TextStyle(color: Colors.grey, fontSize: 12.0),
                             )),
                           );
                         },
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: 5.0,
                           mainAxisSpacing: 5.0,
@@ -174,27 +173,27 @@ class movieDescription extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              const Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20.0),
                 child: Divider(
                   color: Colors.grey,
                 ),
               ),
               ListTile(
-                  title: Text(
+                  title: const Text(
                     "Description",
                     style: TextStyle(color: Colors.white, fontSize: 16.0),
                   ),
                   subtitle: Text(_movieDescription,
-                      style: TextStyle(color: Colors.grey, fontSize: 12.0))),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                      style: const TextStyle(color: Colors.grey, fontSize: 12.0))),
+              const Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20.0),
                 child: Divider(
                   color: Colors.grey,
                 ),
               ),
               ListTile(
-                title: Text(
+                title: const Text(
                   "Related Movies",
                   style: TextStyle(
                       color: Colors.white,
@@ -203,10 +202,10 @@ class movieDescription extends StatelessWidget {
                 ),
                 trailing: TextButton(
                   onPressed: () {},
-                  child: Text("See All"),
+                  child: const Text("See All"),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.width / 2,
                 child: ListView.builder(
@@ -220,7 +219,7 @@ class movieDescription extends StatelessWidget {
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
-                          margin: EdgeInsets.symmetric(horizontal: 8.0),
+                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.0),
                               image: DecorationImage(
@@ -231,7 +230,7 @@ class movieDescription extends StatelessWidget {
                       );
                     }),
               ),
-              Padding(padding: const EdgeInsets.only(bottom: 30.0))
+              const Padding(padding: EdgeInsets.only(bottom: 30.0))
             ],
           ),
         ));

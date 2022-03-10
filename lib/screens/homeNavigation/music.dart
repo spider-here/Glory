@@ -1,24 +1,23 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:glory/Utils/cWidgets.dart';
 import 'package:glory/screens/subScreens/musicPlayer.dart';
-import 'package:glory/screens/subScreens/profile.dart';
 import 'package:glory/screens/subScreens/search.dart';
 
 class music extends StatelessWidget {
-  List<String> _dummyAlbum = [
+  final List<String> _dummyAlbum = [
     "https://images.pexels.com/photos/853151/pexels-photo-853151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=464&q=80",
     "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80),"
         "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
   ];
 
-  cWidgets _widgets = new cWidgets();
+  final cWidgets _widgets = cWidgets();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +33,7 @@ class music extends StatelessWidget {
             onTap: () {
               Get.to(() => search(), fullscreenDialog: true);
             },
-            child: Container(
+            child: const SizedBox(
                 width: double.maxFinite,
                 child: AutoSizeText(
                   "Music",
@@ -43,15 +42,15 @@ class music extends StatelessWidget {
                   maxLines: 1,
                 ))),
         centerTitle: true,
-        titleTextStyle: TextStyle(color: Colors.white),
-        iconTheme: IconThemeData(color: Colors.white),
+        titleTextStyle: const TextStyle(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        leading: _widgets.profileButton(context: context, profileImageURL: _dummyAlbum[0]),
-        bottom: PreferredSize(
+        leading: _widgets.profileButton(context: context, profileImageURL: _dummyAlbum[0], personalProfile: true),
+        bottom: const PreferredSize(
           preferredSize: Size.fromHeight(2.0),
           child: Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+            padding: EdgeInsets.only(left: 20.0, right: 20.0),
             child: Divider(
               height: 0.0,
               thickness: 0.5,
@@ -65,7 +64,7 @@ class music extends StatelessWidget {
         ],
       ),
       body: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
         children: [
           Container(
@@ -80,10 +79,10 @@ class music extends StatelessWidget {
                 return Builder(
                   builder: (BuildContext context) {
                     return InkWell(
-                      onTap: () {Get.to(()=>musicPlayer());},
+                      onTap: () {Get.to(()=>musicPlayer(), transition: Transition.size);},
                       child: Container(
                         width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 8.0),
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
                             image: DecorationImage(
@@ -95,9 +94,9 @@ class music extends StatelessWidget {
               }).toList(),
             ),
           ),
-          Padding(padding: EdgeInsets.only(top: 10.0)),
+          const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: Text(
+            title: const Text(
               "Popular Playlists",
               style: TextStyle(
                   color: Colors.white,
@@ -106,10 +105,10 @@ class music extends StatelessWidget {
             ),
             trailing: TextButton(
               onPressed: () {},
-              child: Text("See All"),
+              child: const Text("See All"),
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.width / 2,
             child: ListView.builder(
@@ -118,14 +117,14 @@ class music extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    onTap: () {Get.to(()=>musicPlayer());},
+                    onTap: () {Get.to(()=>musicPlayer(), transition: Transition.size);},
                     child: Column(
                       children: [
                         Flexible(
                           flex: 2,
                           child: Container(
                             width: MediaQuery.of(context).size.width / 3,
-                            margin: EdgeInsets.symmetric(horizontal: 8.0),
+                            margin: const EdgeInsets.symmetric(horizontal: 8.0),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
                                 image: DecorationImage(
@@ -138,7 +137,7 @@ class music extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
+                            children: const [
                               Text(
                                 "Song Name",
                                 overflow: TextOverflow.ellipsis,
@@ -159,9 +158,9 @@ class music extends StatelessWidget {
                   );
                 }),
           ),
-          Padding(padding: EdgeInsets.only(top: 10.0)),
+          const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: Text(
+            title: const Text(
               "Top Songs",
               style: TextStyle(
                   color: Colors.white,
@@ -170,48 +169,47 @@ class music extends StatelessWidget {
             ),
             trailing: TextButton(
               onPressed: () {Get.to(()=>musicPlayer());},
-              child: Text("See All"),
+              child: const Text("See All"),
             ),
           ),
-          Padding(padding: EdgeInsets.only(top: 10.0)),
-          Container(
-              child: ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: _dummyAlbum.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      onTap: (){Get.to(()=>musicPlayer());},
-                      dense: true,
-                      leading: Container(
-                        width: 50.0,
-                        height: 50.0,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.0),
-                            image: DecorationImage(
-                                image: NetworkImage(_dummyAlbum[index]),
-                                fit: BoxFit.cover)),
-                      ),
-                      title: Text(
-                        "Title",
-                        style: TextStyle(color: Colors.white, fontSize: 14),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      subtitle: Text(
-                        "Subtile",
-                        style: TextStyle(color: Colors.grey, fontSize: 12),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      trailing: Text(
-                        "5:30",
-                        style: TextStyle(color: Colors.grey, fontSize: 12),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    );
-                  })),
-          Padding(padding: EdgeInsets.only(top: 10.0)),
+          const Padding(padding: EdgeInsets.only(top: 10.0)),
+          ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: _dummyAlbum.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  onTap: (){Get.to(()=>musicPlayer(), transition: Transition.size);},
+                  dense: true,
+                  leading: Container(
+                    width: 50.0,
+                    height: 50.0,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        image: DecorationImage(
+                            image: NetworkImage(_dummyAlbum[index]),
+                            fit: BoxFit.cover)),
+                  ),
+                  title: const Text(
+                    "Title",
+                    style: TextStyle(color: Colors.white, fontSize: 14),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  subtitle: const Text(
+                    "Subtile",
+                    style: TextStyle(color: Colors.grey, fontSize: 12),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  trailing: const Text(
+                    "5:30",
+                    style: TextStyle(color: Colors.grey, fontSize: 12),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                );
+              }),
+          const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: Text(
+            title: const Text(
               "Albums",
               style: TextStyle(
                   color: Colors.white,
@@ -220,10 +218,10 @@ class music extends StatelessWidget {
             ),
             trailing: TextButton(
               onPressed: () {Get.to(()=>musicPlayer());},
-              child: Text("See All"),
+              child: const Text("See All"),
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.width / 2,
             child: ListView.builder(
@@ -232,10 +230,10 @@ class music extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                      onTap: () {Get.to(()=>musicPlayer());},
+                      onTap: () {Get.to(()=>musicPlayer(), transition: Transition.size);},
                       child: Container(
                         width: MediaQuery.of(context).size.width / 2,
-                        margin: EdgeInsets.symmetric(horizontal: 8.0),
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
                             image: DecorationImage(
@@ -243,12 +241,12 @@ class music extends StatelessWidget {
                                 fit: BoxFit.cover)),
                         child: Align(
                           alignment: FractionalOffset.bottomCenter,
-                          child: Container(
+                          child: SizedBox(
                             height: MediaQuery.of(context).size.width/5,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
+                              children: const [
                                 Text(
                                   "Song Name",
                                   overflow: TextOverflow.ellipsis,
@@ -268,9 +266,9 @@ class music extends StatelessWidget {
                       ));
                 }),
           ),
-          Padding(padding: EdgeInsets.only(top: 10.0)),
+          const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: Text(
+            title: const Text(
               "Artists",
               style: TextStyle(
                   color: Colors.white,
@@ -279,10 +277,10 @@ class music extends StatelessWidget {
             ),
             trailing: TextButton(
               onPressed: () {Get.to(()=>musicPlayer());},
-              child: Text("See All"),
+              child: const Text("See All"),
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.width / 2,
             child: ListView.builder(
@@ -291,14 +289,14 @@ class music extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    onTap: () {Get.to(()=>musicPlayer());},
+                    onTap: () {Get.to(()=>musicPlayer(), transition: Transition.size);},
                     child: Column(
                       children: [
                         Flexible(
                           flex: 2,
                           child: Container(
                             width: MediaQuery.of(context).size.width / 3,
-                            margin: EdgeInsets.symmetric(horizontal: 8.0),
+                            margin: const EdgeInsets.symmetric(horizontal: 8.0),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
                                 image: DecorationImage(
@@ -311,7 +309,7 @@ class music extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
+                            children: const [
                               Text(
                                 "Song Name",
                                 overflow: TextOverflow.ellipsis,
@@ -332,9 +330,9 @@ class music extends StatelessWidget {
                   );
                 }),
           ),
-          Padding(padding: EdgeInsets.only(top: 10.0)),
+          const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: Text(
+            title: const Text(
               "What's New",
               style: TextStyle(
                   color: Colors.white,
@@ -343,10 +341,10 @@ class music extends StatelessWidget {
             ),
             trailing: TextButton(
               onPressed: () {Get.to(()=>musicPlayer());},
-              child: Text("See All"),
+              child: const Text("See All"),
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.width / 2,
             child: ListView.builder(
@@ -355,14 +353,14 @@ class music extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    onTap: () {Get.to(()=>musicPlayer());},
+                    onTap: () {Get.to(()=>musicPlayer(), transition: Transition.size);},
                     child: Column(
                       children: [
                         Flexible(
                           flex: 2,
                           child: Container(
                             width: MediaQuery.of(context).size.width / 3,
-                            margin: EdgeInsets.symmetric(horizontal: 8.0),
+                            margin: const EdgeInsets.symmetric(horizontal: 8.0),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
                                 image: DecorationImage(
@@ -375,7 +373,7 @@ class music extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
+                            children: const [
                               Text(
                                 "Song Name",
                                 overflow: TextOverflow.ellipsis,
@@ -396,7 +394,7 @@ class music extends StatelessWidget {
                   );
                 }),
           ),
-          Padding(padding: EdgeInsets.only(top: 30.0)),
+          const Padding(padding: EdgeInsets.only(top: 30.0)),
         ],
       ),
     );

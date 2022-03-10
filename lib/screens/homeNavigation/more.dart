@@ -1,18 +1,17 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:glory/Utils/cWidgets.dart';
-import 'package:glory/screens/homeNavigation/more_tabViewContent/events.dart';
+import 'package:glory/screens/homeNavigation/more_tabViewContent/lotto.dart';
 import 'package:glory/screens/homeNavigation/more_tabViewContent/sports.dart';
 import 'package:glory/screens/subScreens/search.dart';
 
 class more extends StatelessWidget {
 
-  cWidgets _widgets = new cWidgets();
-  String _dummyProfilePicture = "https://images.pexels.com/photos/853151/pexels-photo-853151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
+  final cWidgets _widgets = cWidgets();
+  final String _dummyProfilePicture = "https://images.pexels.com/photos/853151/pexels-photo-853151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class more extends StatelessWidget {
               onTap: () {
                 Get.to(() => search(), fullscreenDialog: true);
               },
-              child: Container(
+              child: const SizedBox(
                   width: double.maxFinite,
                   child: AutoSizeText(
                     "More",
@@ -39,17 +38,17 @@ class more extends StatelessWidget {
                     maxLines: 1,
                   ))),
           centerTitle: true,
-          titleTextStyle: TextStyle(color: Colors.white),
-          iconTheme: IconThemeData(color: Colors.white),
+          titleTextStyle: const TextStyle(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
-          leading: _widgets.profileButton(context: context, profileImageURL: _dummyProfilePicture),
+          leading: _widgets.profileButton(context: context, profileImageURL: _dummyProfilePicture, personalProfile: true),
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(50.0),
+            preferredSize: const Size.fromHeight(50.0),
             child: Column(
-              children: [
+              children: const [
                 Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
                   child: Divider(
                     height: 0.0,
                     thickness: 0.5,
@@ -64,7 +63,7 @@ class more extends StatelessWidget {
                       text: "Sports",
                     ),
                     Tab(
-                      text: "Events",
+                      text: "Glory Lotto",
                     )
                   ],
                 ),
@@ -77,10 +76,10 @@ class more extends StatelessWidget {
           ],
         ),
         body: TabBarView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             sports(),
-            events(),
+            lotto(),
           ],
         ),
       ),

@@ -1,5 +1,4 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:glory/screens/access/welcome.dart';
@@ -37,7 +36,7 @@ class splash extends StatelessWidget{
                         color: Theme.of(context).primaryColor,
                         width: 2.0
                       ),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage('assets/images/logo.jpeg',),
                           fit: BoxFit.fitHeight
                       )
@@ -47,7 +46,7 @@ class splash extends StatelessWidget{
               splashTransition: SplashTransition.fadeTransition,
               splashIconSize: 180.0,
               centered: true,
-              animationDuration: Duration(milliseconds: 800),
+              animationDuration: const Duration(milliseconds: 800),
               duration: 1500,
               backgroundColor: Theme.of(context).backgroundColor,
             ),

@@ -1,21 +1,20 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 
 class eventDescription extends StatelessWidget {
-  List<String> _dummyAlbum = [
+  final List<String> _dummyAlbum = [
     "https://images.pexels.com/photos/853151/pexels-photo-853151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=464&q=80",
     "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80),"
         "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
   ];
 
-  String _dummyTitle = "This is the Title";
-  String _dummySubTitle = "This is the Subtitle";
-  String _dummyPrice = "96.7";
-  String _dummyDescription = "Lorem Ipsum is simply dummy text of the printing and typesetting"
+  final String _dummyTitle = "This is the Title";
+  final String _dummySubTitle = "This is the Subtitle";
+  final String _dummyPrice = "96.7";
+  final String _dummyDescription = "Lorem Ipsum is simply dummy text of the printing and typesetting"
       " industry. Lorem Ipsum has been the industry's standard dummy text ever since"
       " the 1500s, when an unknown printer took a galley of type and scrambled it to"
       " make a type specimen book. It has survived not only five centuries, but also "
@@ -37,27 +36,29 @@ class eventDescription extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        iconTheme: IconThemeData(color: Colors.white),
-        actionsIconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
+        actionsIconTheme: const IconThemeData(color: Colors.white),
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.more_vert_outlined,
                 color: Colors.white,
-              ))
+              ),
+          splashColor: Theme.of(context).primaryColor,
+          splashRadius: 20.0,)
         ],
       ),
-      body: Container(
+      body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.width * 1.2,
                 child: Stack(
@@ -68,7 +69,7 @@ class eventDescription extends StatelessWidget {
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.width * 1.1,
                           decoration: BoxDecoration(
-                              image: DecorationImage(
+                              image: const DecorationImage(
                                   image: NetworkImage(
                                     "https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=464&q=80",
                                   ),
@@ -90,7 +91,7 @@ class eventDescription extends StatelessWidget {
                             dense: true,
                             title: Text(
                               _dummyTitle,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold),
@@ -100,7 +101,7 @@ class eventDescription extends StatelessWidget {
                               text: TextSpan(children: [
                                 TextSpan(
                                   text: _dummySubTitle,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.grey,
                                       fontSize: 12,
                                       overflow: TextOverflow.ellipsis),
@@ -131,30 +132,30 @@ class eventDescription extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(padding: const EdgeInsets.only(top: 10.0)),
+              const Padding(padding: EdgeInsets.only(top: 10.0)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width / 1.4,
                     child: ListTile(
                       dense: true,
                       contentPadding: const EdgeInsets.all(0.0),
                       horizontalTitleGap: 5.0,
-                      leading: CircleAvatar(
+                      leading: const CircleAvatar(
                         radius: 30.0,
                       ),
                       title: Text(
                         _dummyTitle,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.white,
                             fontSize: 14,
                             fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(
                         _dummySubTitle,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 10,
                         ),
@@ -163,7 +164,7 @@ class eventDescription extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.call_rounded,
                       color: Colors.white,
                     ),
@@ -172,7 +173,7 @@ class eventDescription extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.mail_outline_rounded,
                       color: Colors.white,
                     ),
@@ -181,8 +182,8 @@ class eventDescription extends StatelessWidget {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
+              const Padding(
+                padding: EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
                 child: Text(
                   "About",
                   style: TextStyle(
@@ -192,7 +193,7 @@ class eventDescription extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   child: Text(
                     _dummyDescription,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 12.0, color: Colors.grey, fontWeight: FontWeight.bold),
                   ),
               ),
@@ -200,10 +201,10 @@ class eventDescription extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   height: 50.0,
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: ElevatedButton(onPressed: (){}, child: Text("Book Now",))),
-              Padding(padding: const EdgeInsets.only(top: 10.0)),
+                  child: ElevatedButton(onPressed: (){}, child: const Text("Book Now",))),
+              const Padding(padding: EdgeInsets.only(top: 10.0)),
               ListTile(
-                title: Text(
+                title: const Text(
                   "Recommendation",
                   style: TextStyle(
                       color: Colors.white,
@@ -212,7 +213,7 @@ class eventDescription extends StatelessWidget {
                 ),
                 trailing: TextButton(
                   onPressed: () {},
-                  child: Text("See All"),
+                  child: const Text("See All"),
                 ),
               ),
               Container(
@@ -240,14 +241,14 @@ class eventDescription extends StatelessWidget {
                             child: Align(
                               alignment: FractionalOffset.bottomCenter,
                               child: Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(20.0),
                                       bottomRight: Radius.circular(20.0)
                                   ),
                                 ),
-                                child: ListTile(
+                                child: const ListTile(
                                   dense: true,
                                   title: Text("Title", style: TextStyle(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
                                   subtitle: Text("Subtitle",  overflow: TextOverflow.ellipsis),
