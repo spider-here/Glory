@@ -13,12 +13,14 @@ class checkoutSuccess extends StatelessWidget{
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(
+            color: Theme.of(context).textTheme.bodyText1?.color
+        ),
       ),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
@@ -28,10 +30,10 @@ class checkoutSuccess extends StatelessWidget{
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Spacer(),
-            const Text(
+            Text(
               "Payment Successful!",
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.bodyText1?.copyWith( fontSize: 24.0, fontWeight: FontWeight.bold),
             ),
             const Spacer(),
             SizedBox(

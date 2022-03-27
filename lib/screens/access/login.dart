@@ -18,8 +18,8 @@ class login extends StatelessWidget{
     elevation: 0.0,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Theme.of(context).backgroundColor,
-        statusBarBrightness: Brightness.dark,
-        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+        statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
       ),
     ),
     body:SingleChildScrollView(
@@ -55,23 +55,23 @@ class login extends StatelessWidget{
                       ),
                       // Padding(padding: const EdgeInsets.only(top: 20.0)),
                       const Spacer(flex: 1,),
-                      const Text("Welcome to GLORY", style: TextStyle(color: Colors.white,
+                      Text("Welcome to GLORY", style: Theme.of(context).textTheme.bodyText1?.copyWith(
                           fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold),),
                       // Padding(padding: const EdgeInsets.only(top: 10.0)),
                       const Spacer(flex: 1,),
-                      const Text(
+                      Text(
                         "Sign in to continue",
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white, fontSize: 14.0),
+                        style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 14.0),
                       ),
                       // Padding(padding: const EdgeInsets.only(top: 50.0)),
                       const Spacer(flex: 6,),
                       TextField(
                         style: TextStyle(color: Theme.of(context).primaryColor),
                         keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
-                          label: Text("Phone Number", style: TextStyle(color: Colors.white,)),
-                          prefixIcon: Icon(Icons.phone_iphone_outlined, color: Colors.white,),
+                        decoration: InputDecoration(
+                          label: Text("Phone Number", style: Theme.of(context).textTheme.bodyText1),
+                          prefixIcon: Icon(Icons.phone_iphone_outlined, color: Theme.of(context).textTheme.bodyText1?.color),
                         ),
                       ),
                       // Padding(padding: const EdgeInsets.only(top: 30.0)),
@@ -79,9 +79,9 @@ class login extends StatelessWidget{
                       TextField(
                         obscureText: true,
                         style: TextStyle(color: Theme.of(context).primaryColor),
-                        decoration: const InputDecoration(
-                          label: Text("Password", style: TextStyle(color: Colors.white,)),
-                          prefixIcon: Icon(Icons.lock_outline, color: Colors.white,),
+                        decoration: InputDecoration(
+                          label: Text("Password", style: Theme.of(context).textTheme.bodyText1),
+                          prefixIcon: Icon(Icons.lock_outline, color: Theme.of(context).textTheme.bodyText1?.color,),
                         ),
                       ),
                       const Spacer(flex: 1,),
@@ -91,7 +91,7 @@ class login extends StatelessWidget{
                         children: [
                           InkWell(
                             onTap: ()=>Get.to(()=>forgotPassword()),
-                            child: const Text("Forgot Password?", style: TextStyle(fontSize: 12.0, color: Colors.grey),),
+                            child: Text("Forgot Password?", style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 12.0,),),
                           )
                         ],
                       ),
@@ -145,7 +145,7 @@ class login extends StatelessWidget{
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Don't have an account? ", style: TextStyle( fontSize: 14.0, color: Colors.white,),),
+                    Text("Don't have an account? ", style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 14.0),),
                     InkWell(onTap: ()=>Get.to(()=>register()), child: Text("Register Now", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0, color: Theme.of(context).primaryColor),))
                   ],
                 )

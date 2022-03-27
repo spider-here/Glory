@@ -9,19 +9,20 @@ class search extends StatelessWidget{
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
+
         title: Container(
           padding: const EdgeInsets.all(5.0),
           height: 40.0,
           decoration: BoxDecoration(
-              color: Colors.grey.shade800,
+              color: MediaQuery.of(context).platformBrightness == Brightness.light? Colors.grey.shade100 : Colors.grey.shade800,
               borderRadius: BorderRadius.circular(10.0)
           ),
-          child: const TextField(
+          child: TextField(
             style: TextStyle(
-                color: Colors.white
+                color: MediaQuery.of(context).platformBrightness == Brightness.light? Colors.black : Colors.white,
             ),
             textAlignVertical: TextAlignVertical.center,
             decoration: InputDecoration(
@@ -39,12 +40,13 @@ class search extends StatelessWidget{
           ),
         ),
         titleTextStyle: const TextStyle(color: Colors.white),
-        iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(
+          color: Theme.of(context).textTheme.bodyText1?.color
+    ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
       ),
       body: Container(
-        color: Colors.grey.shade900,
         child: const Center(
           child: CircularProgressIndicator(),
         ),

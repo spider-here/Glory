@@ -13,7 +13,7 @@ class books extends StatelessWidget{
   final List<String> _dummyAlbum = [
     "https://images.pexels.com/photos/853151/pexels-photo-853151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=464&q=80",
-    "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80),"
+    "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
         "https://images.unsplash.com/photo-1545987796-200677ee1011?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0d29ya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
   ];
 
@@ -29,8 +29,8 @@ class books extends StatelessWidget{
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
         title: InkWell(
             onTap: () {
@@ -38,14 +38,9 @@ class books extends StatelessWidget{
             },
             child: const SizedBox(
                 width: double.maxFinite,
-                child: AutoSizeText(
-                  "Books",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18.0),
-                  maxLines: 1,
-                ))),
+                child: AutoSizeText("Books", textAlign: TextAlign.center, maxLines: 1,))),
         centerTitle: true,
-        titleTextStyle: const TextStyle(color: Colors.white),
+        titleTextStyle: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 18.0),
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -72,10 +67,9 @@ class books extends StatelessWidget{
         children: [
           const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: const Text(
+            title: Text(
               "Popular Books",
-              style: TextStyle(
-                  color: Colors.white,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -164,28 +158,28 @@ class books extends StatelessWidget{
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
+                                  Text(
                                     "Book Name",
                                     overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        fontSize: 14.0, color: Colors.white),
+                                    style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                        fontSize: 14.0,),
                                   ),
-                                  const Text(
+                                  Text(
                                     "Author Name",
                                     overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        fontSize: 12.0, color: Colors.grey),
+                                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                        fontSize: 12.0,),
                                   ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
-                                      Text("\$" + _dummyPrice, style: const TextStyle(
-                                          fontSize: 12.0, color: Colors.white),),
+                                      Text("\$" + _dummyPrice, style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                          fontSize: 12.0,),),
                                       const Spacer(),
                                       RatingBarIndicator(
                                         rating: _dummyRating,
-                                        unratedColor: Colors.white,
+                                        unratedColor: Colors.grey,
                                         itemBuilder: (context, index) => Icon(
                                           Icons.star,
                                           color: Theme.of(context).primaryColor,
@@ -209,10 +203,9 @@ class books extends StatelessWidget{
           ),
           const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: const Text(
+            title: Text(
               "Daily Recommended",
-              style: TextStyle(
-                  color: Colors.white,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -288,10 +281,9 @@ class books extends StatelessWidget{
           ),
           const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: const Text(
+            title: Text(
               "Top Free",
-              style: TextStyle(
-                  color: Colors.white,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -379,18 +371,18 @@ class books extends StatelessWidget{
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
+                                    children: [
                                       Text(
                                         "Book Name",
                                         overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            fontSize: 14.0, color: Colors.white),
+                                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                            fontSize: 14.0,),
                                       ),
                                       Text(
                                         "Author Name",
                                         overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            fontSize: 12.0, color: Colors.grey),
+                                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                            fontSize: 12.0),
                                       ),
                                     ],
                                   ),
@@ -405,10 +397,9 @@ class books extends StatelessWidget{
           ),
           const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: const Text(
+            title: Text(
               "Newest",
-              style: TextStyle(
-                  color: Colors.white,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -498,20 +489,20 @@ class books extends StatelessWidget{
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
+                                      Text(
                                         "Book Name",
                                         overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            fontSize: 14.0, color: Colors.white),
+                                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                            fontSize: 14.0,),
                                       ),
                                       const Padding(
                                         padding: EdgeInsets.only(top: 5.0),
                                       ),
-                                      const Text(
+                                      Text(
                                         "Author Name",
                                         overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            fontSize: 12.0, color: Colors.grey),
+                                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                            fontSize: 12.0),
                                       ),
                                       const Padding(
                                         padding: EdgeInsets.only(top: 5.0),

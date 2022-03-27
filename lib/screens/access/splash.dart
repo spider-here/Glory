@@ -13,8 +13,8 @@ class splash extends StatelessWidget{
         elevation: 0.0,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.dark,),
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,),
       ),
       body: Stack(
         children: [

@@ -30,20 +30,20 @@ class eventDescription extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
+          statusBarColor: Colors.transparent,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        iconTheme: const IconThemeData(color: Colors.white),
-        actionsIconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(
+            color: Theme.of(context).textTheme.bodyText1?.color
+        ),
         actions: [
           IconButton(
               onPressed: () {},
               icon: const Icon(
                 Icons.more_vert_outlined,
-                color: Colors.white,
               ),
           splashColor: Theme.of(context).primaryColor,
           splashRadius: 20.0,)
@@ -148,15 +148,13 @@ class eventDescription extends StatelessWidget {
                       ),
                       title: Text(
                         _dummyTitle,
-                        style: const TextStyle(
-                            color: Colors.white,
+                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
                             fontSize: 14,
                             fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(
                         _dummySubTitle,
-                        style: const TextStyle(
-                          color: Colors.white,
+                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
                           fontSize: 10,
                         ),
                       ),
@@ -164,37 +162,37 @@ class eventDescription extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.call_rounded,
-                      color: Colors.white,
+                      color: Theme.of(context).textTheme.bodyText1?.color,
                     ),
                     splashColor: Theme.of(context).primaryColor,
                     splashRadius: 20.0,
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.mail_outline_rounded,
-                      color: Colors.white,
+                      color: Theme.of(context).textTheme.bodyText1?.color,
                     ),
                     splashColor: Theme.of(context).primaryColor,
                     splashRadius: 20.0,
                   ),
                 ],
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
                 child: Text(
                   "About",
-                  style: TextStyle(
-                      fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                      fontSize: 16.0, fontWeight: FontWeight.bold),
                 ),
               ),Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   child: Text(
                     _dummyDescription,
-                    style: const TextStyle(
-                        fontSize: 12.0, color: Colors.grey, fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                        fontSize: 12.0, fontWeight: FontWeight.bold),
                   ),
               ),
               Container(
@@ -204,10 +202,9 @@ class eventDescription extends StatelessWidget {
                   child: ElevatedButton(onPressed: (){}, child: const Text("Book Now",))),
               const Padding(padding: EdgeInsets.only(top: 10.0)),
               ListTile(
-                title: const Text(
+                title: Text(
                   "Recommendation",
-                  style: TextStyle(
-                      color: Colors.white,
+                  style: Theme.of(context).textTheme.bodyText1?.copyWith(
                       fontWeight: FontWeight.bold,
                       fontSize: 18.0),
                 ),
@@ -241,8 +238,8 @@ class eventDescription extends StatelessWidget {
                             child: Align(
                               alignment: FractionalOffset.bottomCenter,
                               child: Container(
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade800,
                                   borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(20.0),
                                       bottomRight: Radius.circular(20.0)
@@ -250,8 +247,8 @@ class eventDescription extends StatelessWidget {
                                 ),
                                 child: const ListTile(
                                   dense: true,
-                                  title: Text("Title", style: TextStyle(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
-                                  subtitle: Text("Subtitle",  overflow: TextOverflow.ellipsis),
+                                  title: Text("Title", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
+                                  subtitle: Text("Subtitle",style: TextStyle(color: Colors.white), overflow: TextOverflow.ellipsis),
                                 ),
                               ),
                             ),

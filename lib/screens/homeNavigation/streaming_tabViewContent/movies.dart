@@ -49,10 +49,9 @@ class movies extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Recommended for you",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -88,10 +87,9 @@ class movies extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Trending",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -127,10 +125,9 @@ class movies extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "New Release",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -166,10 +163,9 @@ class movies extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Action",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -205,10 +201,9 @@ class movies extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Comedy",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -244,10 +239,9 @@ class movies extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Drama",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -283,10 +277,9 @@ class movies extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Fantasy",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -322,10 +315,9 @@ class movies extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Horror",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -361,10 +353,9 @@ class movies extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Mystery",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -400,10 +391,9 @@ class movies extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Romance",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -439,10 +429,9 @@ class movies extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Thriller",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -478,10 +467,9 @@ class movies extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Western",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),

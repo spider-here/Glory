@@ -6,14 +6,112 @@ void main() {
   runApp(GetMaterialApp(
     title: "Glory",
     home: splash(),
+    themeMode: ThemeMode.system,
+    darkTheme: ThemeData(
+        canvasColor: Colors.grey.shade900,
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: Colors.grey.shade900,
+          unselectedItemColor: Colors.grey,
+          selectedItemColor: appPrimary,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          type: BottomNavigationBarType.shifting,
+          unselectedIconTheme: const IconThemeData(
+              size: 20.0
+          ),
+          selectedIconTheme: IconThemeData(
+            size: 24.0,
+          ),
+        ),
+      textTheme: TextTheme(
+          bodyText1: TextStyle(color: Colors.white),
+          bodyText2: TextStyle(color: Colors.grey)
+      ),
+        fontFamily: 'Poppins',
+        backgroundColor: Colors.black,
+        primarySwatch: appPrimary,
+        primaryColor: appPrimary,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+                elevation: MaterialStateProperty.all(4.0),
+                shadowColor: MaterialStateProperty.all(appPrimary),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    )
+                ),
+                foregroundColor: MaterialStateProperty.all(Colors.white),
+                backgroundColor: MaterialStateProperty.all(appPrimary),
+                textStyle: MaterialStateProperty.all<TextStyle>(
+                    const TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold
+                    )
+                )
+            )
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+            style: ButtonStyle(
+                side: MaterialStateProperty.all<BorderSide>(
+                    BorderSide(
+                        width: 1.0,
+                        color: appPrimary
+                    )
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    )
+                ),
+                textStyle: MaterialStateProperty.all<TextStyle>(
+                    TextStyle(
+                        fontFamily: 'Poppins',
+                        color: appPrimary,
+                        fontWeight: FontWeight.bold
+                    )
+                )
+            )
+        ),
+        inputDecorationTheme: const InputDecorationTheme(
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+                color: Colors.grey
+            ),),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+                color: Colors.white
+            ),),
+          isDense: true,
+          contentPadding: EdgeInsets.all(0.0),
+        )
+    ),
     theme: ThemeData(
+      canvasColor: Colors.white,
+      textTheme: TextTheme(
+        bodyText1: TextStyle(color: Colors.black),
+        bodyText2: TextStyle(color: Colors.grey)
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: Colors.white,
+        unselectedItemColor: Colors.black,
+        selectedItemColor: appPrimary,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.shifting,
+        unselectedIconTheme: const IconThemeData(
+            size: 20.0
+        ),
+        selectedIconTheme: IconThemeData(
+          size: 24.0,
+        ),
+      ),
       fontFamily: 'Poppins',
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       primarySwatch: appPrimary,
       primaryColor: appPrimary,
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          elevation: MaterialStateProperty.all(6.0),
+          elevation: MaterialStateProperty.all(4.0),
             shadowColor: MaterialStateProperty.all(appPrimary),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
@@ -59,7 +157,7 @@ void main() {
           ),),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-              color: Colors.white
+              color: Colors.black
           ),),
         isDense: true,
           contentPadding: EdgeInsets.all(0.0),
@@ -80,3 +178,8 @@ MaterialColor appPrimary = const MaterialColor(0xFF81DDAA, <int, Color>{
   800: Color.fromRGBO(129, 221, 170, 1),
   900: Color.fromRGBO(129, 221, 170, 1),
 });
+
+
+
+//18,
+//12,

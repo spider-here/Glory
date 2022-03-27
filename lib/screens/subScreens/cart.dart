@@ -25,17 +25,19 @@ class cart extends StatelessWidget {
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        iconTheme: const IconThemeData(color: Colors.white),
-        actionsIconTheme: const IconThemeData(color: Colors.white),
-        title: const AutoSizeText(
+        iconTheme: IconThemeData(
+          color: Theme.of(context).textTheme.bodyText1?.color
+    ),
+        actionsIconTheme: IconThemeData(color: Theme.of(context).textTheme.bodyText1?.color),
+        title: AutoSizeText(
           "Cart",
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 18.0),
+          style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 18.0),
           maxLines: 1,
         ),
         centerTitle: true,
@@ -45,7 +47,6 @@ class cart extends StatelessWidget {
               onPressed: () {},
               icon: const Icon(
                 Icons.more_vert_outlined,
-                color: Colors.white,
               ),
           splashRadius: 20.0,
           splashColor: Theme.of(context).primaryColor,)
@@ -70,9 +71,8 @@ class cart extends StatelessWidget {
                             dense: true,
                             title: Text(
                               _dummyCategories[index],
-                              style: const TextStyle(
+                              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white,
                                   fontSize: 18.0),
                             ),
                           ),
@@ -137,23 +137,21 @@ class cart extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              const Text(
+                                              Text(
                                                 "Item Name",
                                                 overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    fontSize: 14.0,
-                                                    color: Colors.white),
+                                                style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                                    fontSize: 14.0,),
                                               ),
                                               const Padding(
                                                 padding: EdgeInsets.only(
                                                     top: 5.0),
                                               ),
-                                              const Text(
+                                              Text(
                                                 "Item Description",
                                                 overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    fontSize: 12.0,
-                                                    color: Colors.grey),
+                                                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                                    fontSize: 12.0,),
                                               ),
                                               const Padding(
                                                 padding: EdgeInsets.only(
@@ -161,7 +159,7 @@ class cart extends StatelessWidget {
                                               ),
                                               RatingBarIndicator(
                                                 rating: _dummyRating,
-                                                unratedColor: Colors.white,
+                                                unratedColor: Colors.grey,
                                                 itemBuilder: (context, index) =>
                                                     Icon(
                                                   Icons.star,
@@ -192,9 +190,9 @@ class cart extends StatelessWidget {
                                                   ),
                                                   Text(
                                                     "\$" + _dummyPrice,
-                                                    style: const TextStyle(
+                                                    style: TextStyle(
                                                         fontSize: 12.0,
-                                                        color: Colors.white,
+                                                        color: Theme.of(context).textTheme.bodyText1?.color,
                                                         decoration:
                                                             TextDecoration
                                                                 .lineThrough),
@@ -217,22 +215,21 @@ class cart extends StatelessWidget {
             flex: 1,
             child: Column(
               children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: Divider(
                     height: 0.0,
-                    color: Colors.white,
+                    color: MediaQuery.of(context).platformBrightness == Brightness.light? Colors.grey : Colors.white,
                     thickness: 0.5,
                   ),
                 ),
                 const Spacer(),
                 ListTile(
                   dense: true,
-                  title: const Text(
+                  title: Text(
                     "Total",
-                    style: TextStyle(
+                    style: Theme.of(context).textTheme.bodyText1?.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
                         fontSize: 16.0),
                   ),
                   trailing: Text(

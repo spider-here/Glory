@@ -38,26 +38,21 @@ class musicPlayer extends StatelessWidget {
         appBar: AppBar(
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: Theme.of(context).backgroundColor,
-            statusBarBrightness: Brightness.dark,
-            statusBarIconBrightness: Brightness.light,),
+            statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+            statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
-          iconTheme: const IconThemeData(color: Colors.white),
-          actionsIconTheme: const IconThemeData(color: Colors.white),
-          title: const AutoSizeText(
-            "Listening",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18.0),
-            maxLines: 1,
+          iconTheme: IconThemeData(
+              color: Theme.of(context).textTheme.bodyText1?.color
           ),
+          title: const AutoSizeText("Listening", textAlign: TextAlign.center, maxLines: 1,),
           centerTitle: true,
-          titleTextStyle: const TextStyle(color: Colors.white),
+          titleTextStyle: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 18.0),
           actions: [
             IconButton(
                 onPressed: () {},
                 icon: const Icon(
                   Icons.more_vert_outlined,
-                  color: Colors.white,
                 ))
           ],
         ),
@@ -92,11 +87,11 @@ class musicPlayer extends StatelessWidget {
                   alignment: FractionalOffset.bottomCenter,
                   child: SolidBottomSheet(
                       controller: _bottomSheetController,
-                      elevation: 10.0,
+                      // elevation: 100.0,
                       maxHeight: MediaQuery.of(context).size.height/2,
                       headerBar: Card(
                         margin: const EdgeInsets.all(0.0),
-                        color: Colors.grey.shade900,
+                        color: MediaQuery.of(context).platformBrightness == Brightness.light? Colors.grey.shade100 : Colors.grey.shade900,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(20.0),
@@ -124,20 +119,19 @@ class musicPlayer extends StatelessWidget {
                                 dense: true,
                                   title: Text(
                                     _dummySongName,
-                                    style: const TextStyle(
-                                        color: Colors.white,
+                                    style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   subtitle: Text(
                                     _dummyArtistName,
                                     style:
-                                    const TextStyle(color: Colors.white, fontSize: 12.0),
+                                    Theme.of(context).textTheme.bodyText1?.copyWith( fontSize: 12.0),
                                   ),
                                   trailing: IconButton(
-                                    icon: const Icon(
+                                    icon: Icon(
                                       Icons.favorite_outline,
-                                      color: Colors.white,
+                                      color: Theme.of(context).textTheme.bodyText1?.color
                                     ),
                                     splashColor: Theme.of(context).primaryColor,
                                     splashRadius: 20.0,
@@ -153,20 +147,18 @@ class musicPlayer extends StatelessWidget {
                                     SeekBar(
                                       progressColor: Theme.of(context).primaryColor,
                                       thumbColor: Theme.of(context).primaryColor,
-                                      barColor: Colors.white,
+                                      barColor: Theme.of(context).textTheme.bodyText2?.color,
                                       progressWidth: 3.2,
                                     ),
                                     Row(children: [
                                       Text(
                                         _dummyCompletedDuration,
-                                        style: const TextStyle(
-                                            color: Colors.grey, fontSize: 14.0),
+                                        style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 14.0),
                                       ),
                                       const Spacer(),
                                       Text(
                                         _dummyTotalDuration,
-                                        style: const TextStyle(
-                                            color: Colors.grey, fontSize: 14.0),
+                                        style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 14.0),
                                       ),
                                     ]),
                                     const Padding(padding: EdgeInsets.only(top: 5.0)),
@@ -175,9 +167,9 @@ class musicPlayer extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         InkWell(
-                                          child: const Icon(
+                                          child: Icon(
                                             Icons.skip_previous_rounded,
-                                            color: Colors.white,
+                                            color: Theme.of(context).textTheme.bodyText1?.color,
                                             size: 30.0,
                                           ),
                                           onTap: () {},
@@ -207,9 +199,9 @@ class musicPlayer extends StatelessWidget {
                                             padding: EdgeInsets.symmetric(
                                                 horizontal: 5.0)),
                                         InkWell(
-                                          child: const Icon(
+                                          child: Icon(
                                             Icons.skip_next_rounded,
-                                            color: Colors.white,
+                                            color: Theme.of(context).textTheme.bodyText1?.color,
                                             size: 30.0,
                                           ),
                                           onTap: () {},
@@ -226,7 +218,7 @@ class musicPlayer extends StatelessWidget {
                         ),
                       ),
                       body: Container(
-                          color: Colors.grey.shade900,
+                          color: MediaQuery.of(context).platformBrightness == Brightness.light? Colors.grey.shade100 : Colors.grey.shade900,
                           child:
                               ListView.builder(
                                 shrinkWrap: true,
@@ -244,18 +236,15 @@ class musicPlayer extends StatelessWidget {
                                         ),
                                         title: Text(
                                           _dummySongName,
-                                          style: const TextStyle(
-                                              color: Colors.white,
+                                          style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold),
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                         subtitle: Text(_dummyArtistName,
-                                            style: const TextStyle(
-                                                color: Colors.grey, fontSize: 12.0),
+                                            style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 12.0),
                                             overflow: TextOverflow.ellipsis),
-                                        trailing: Text(_dummyTotalDuration, style: const TextStyle(
-                                            color: Colors.grey, fontSize: 12.0),),
+                                        trailing: Text(_dummyTotalDuration, style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 12.0),),
                                   );
                                 },
                               ),

@@ -13,12 +13,12 @@ class spinWheel extends StatelessWidget {
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(color: Theme.of(context).textTheme.bodyText1?.color),
       ),
       body: Stack(
         children: [
@@ -40,10 +40,10 @@ class spinWheel extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                   const Padding(padding: EdgeInsets.only(top: 10.0)),
-                  const Text(
+                  Text(
                     "Stand a chance to win coupons for your entertainment!",
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white, fontSize: 14.0),
+                    style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 14.0),
                   ),
                 ],
               ),

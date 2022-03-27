@@ -10,8 +10,8 @@ class storyMusicProfile extends StatelessWidget{
         backgroundColor: Theme.of(context).backgroundColor,
         elevation: 0.0,
         centerTitle: true,
-        iconTheme: const IconThemeData(
-          color: Colors.white
+        iconTheme: IconThemeData(
+            color: Theme.of(context).textTheme.bodyText1?.color
         ),
         actions: [
           IconButton(
@@ -20,13 +20,12 @@ class storyMusicProfile extends StatelessWidget{
               splashRadius: 20.0,
               icon: const Icon(
                 Icons.share,
-                color: Colors.white,
               ))
         ],
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.light,
-          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
       ),
       body: Stack(
@@ -61,13 +60,13 @@ class storyMusicProfile extends StatelessWidget{
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text("Title", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0, color: Colors.white),),
-                            const Text("Subtitle", style: TextStyle(color: Colors.grey, fontSize: 12.0),),
-                            const Text("1.7M Videos", style: TextStyle(color: Colors.grey, fontSize: 12.0),),
+                            Text("Title", style: Theme.of(context).textTheme.bodyText1?.copyWith(fontWeight: FontWeight.bold, fontSize: 14.0,),),
+                            Text("Subtitle", style: Theme.of(context).textTheme.bodyText2?.copyWith( fontSize: 12.0),),
+                            Text("1.7M Videos", style: Theme.of(context).textTheme.bodyText2?.copyWith( fontSize: 12.0),),
                             const Padding(padding: EdgeInsets.only(top: 10.0)),
                             OutlinedButton.icon(
                               onPressed: () {},
-                              icon: const Icon(Icons.bookmark_outline, color: Colors.white, size: 18.0,),
+                              icon: const Icon(Icons.bookmark_outline, size: 18.0,),
                               label: const Text(
                                 "Add to Favorites",
                                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0),
@@ -84,7 +83,7 @@ class storyMusicProfile extends StatelessWidget{
                                         fontFamily: 'Poppins',
                                       )
                                   ),
-                                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                                  foregroundColor: MaterialStateProperty.all(Theme.of(context).textTheme.bodyText1?.color),
                                 )
                             ),
                           ],

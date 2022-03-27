@@ -22,25 +22,25 @@ class streaming extends StatelessWidget {
           appBar: AppBar(
             systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Theme.of(context).backgroundColor,
-              statusBarBrightness: Brightness.dark,
-              statusBarIconBrightness: Brightness.light,
+              statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+              statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
             ),
             title: InkWell(
                 onTap: () {
                   Get.to(() => search(), fullscreenDialog: true);
                 },
-                child: const SizedBox(width: double.maxFinite,
-                    child: AutoSizeText("Live Streaming", textAlign: TextAlign.center, style: TextStyle(fontSize: 18.0), maxLines: 1,))),
+                child: SizedBox(width: double.maxFinite,
+                    child: AutoSizeText("Live Streaming", textAlign: TextAlign.center, maxLines: 1,))),
             centerTitle: true,
-            titleTextStyle: const TextStyle(color: Colors.white),
-            iconTheme: const IconThemeData(color: Colors.white),
+            titleTextStyle: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 18.0),
+            iconTheme: IconThemeData(color: Theme.of(context).textTheme.bodyText1?.color),
             backgroundColor: Colors.transparent,
             elevation: 0.0,
             leading: _widgets.profileButton(context: context, profileImageURL: _dummyProfilePictureURL, personalProfile: true),
             bottom: PreferredSize(
               preferredSize: const Size.fromHeight(50.0),
               child: Column(
-                children: const [
+                children: [
                   Padding(
                     padding: EdgeInsets.only(left: 20.0, right: 20.0),
                     child: Divider(
@@ -50,7 +50,7 @@ class streaming extends StatelessWidget {
                     ),
                   ),
                   TabBar(
-                    labelColor: Colors.white,
+                    labelColor: Theme.of(context).textTheme.bodyText1?.color,
                     indicatorSize: TabBarIndicatorSize.label,
                     tabs: [
                       Tab(

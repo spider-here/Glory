@@ -116,10 +116,9 @@ class videoGames extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Free Demo",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -160,10 +159,9 @@ class videoGames extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Hottest Deals",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -230,10 +228,9 @@ class videoGames extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Trending",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -287,10 +284,9 @@ class videoGames extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Most Watched",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -324,10 +320,9 @@ class videoGames extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Browse By Collection",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -368,10 +363,9 @@ class videoGames extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "What We're Watching",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -438,10 +432,9 @@ class videoGames extends StatelessWidget{
         ),
         const Padding(padding: EdgeInsets.only(top: 10.0)),
         ListTile(
-          title: const Text(
+          title: Text(
             "Coming Soon",
-            style: TextStyle(
-                color: Colors.white,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),

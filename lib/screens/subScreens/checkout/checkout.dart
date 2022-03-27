@@ -19,13 +19,15 @@ class checkout extends StatelessWidget{
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Theme.of(context).backgroundColor,
+            statusBarColor: Colors.grey.shade900,
             statusBarBrightness: Brightness.dark,
             statusBarIconBrightness: Brightness.light,
           ),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
-          iconTheme: const IconThemeData(color: Colors.white),
+          iconTheme: IconThemeData(
+              color: Colors.white
+          ),
         ),
         body: SizedBox(
           width: MediaQuery.of(context).size.width,

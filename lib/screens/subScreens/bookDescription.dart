@@ -32,26 +32,21 @@ class bookDescription extends StatelessWidget{
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,),
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        iconTheme: const IconThemeData(color: Colors.white),
-        actionsIconTheme: const IconThemeData(color: Colors.white),
-        title: const AutoSizeText(
-          "Books",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 18.0),
-          maxLines: 1,
+        iconTheme: IconThemeData(
+            color: Theme.of(context).textTheme.bodyText1?.color
         ),
-        centerTitle: true,
-        titleTextStyle: const TextStyle(color: Colors.white),
+        title: AutoSizeText("Books", textAlign: TextAlign.center, maxLines: 1,),
+    centerTitle: true,
+    titleTextStyle: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 18.0),
         actions: [
           IconButton(
               onPressed: () {},
               icon: const Icon(
                 Icons.more_vert_outlined,
-                color: Colors.white,
               ))
         ],
       ),
@@ -125,17 +120,17 @@ class bookDescription extends StatelessWidget{
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           "Book Name",
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold),
+                          style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                              fontSize: 20.0, fontWeight: FontWeight.bold),
                         ),
-                        const Text(
+                        Text(
                           "Author Name",
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontSize: 14.0, color: Colors.grey),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                              fontSize: 14.0,),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -143,7 +138,7 @@ class bookDescription extends StatelessWidget{
                           children: [
                             RatingBarIndicator(
                               rating: _dummyRating,
-                              unratedColor: Colors.white,
+                              unratedColor: Colors.grey,
                               itemBuilder: (context, index) => Icon(
                                 Icons.star,
                                 color: Theme.of(context).primaryColor,
@@ -153,8 +148,8 @@ class bookDescription extends StatelessWidget{
                               direction: Axis.horizontal,
                             ),
                             const Padding(padding: EdgeInsets.only(right: 10.0)),
-                            Text("$_dummyRating / 5", style: const TextStyle(
-                                fontSize: 14.0, color: Colors.white),),
+                            Text("$_dummyRating / 5", style:Theme.of(context).textTheme.bodyText1?.copyWith(
+                                fontSize: 14.0,),),
                           ],
                         ),
                         Padding(
@@ -172,7 +167,7 @@ class bookDescription extends StatelessWidget{
                                 child: ElevatedButton.icon(onPressed: (){}, label: const Text("Preview"), icon: const Icon(Icons.read_more_rounded),
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.white),
-                                  foregroundColor: MaterialStateProperty.all(Colors.black)
+                                  foregroundColor: MaterialStateProperty.all(Colors.black),
                                 ),),
                               ),
                               const Padding(padding: EdgeInsets.only(right: 10.0)),
@@ -202,10 +197,9 @@ class bookDescription extends StatelessWidget{
                               ),)),
                         const Padding(padding: EdgeInsets.only(top: 10.0)),
                         ListTile(
-                          title: const Text(
+                          title: Text(
                             "Related Books",
-                            style: TextStyle(
-                                color: Colors.white,
+                            style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18.0),
                           ),
@@ -293,18 +287,18 @@ class bookDescription extends StatelessWidget{
                                                 child: Column(
                                                   mainAxisAlignment: MainAxisAlignment.start,
                                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: const [
+                                                  children:[
                                                     Text(
                                                       "Book Name",
                                                       overflow: TextOverflow.ellipsis,
-                                                      style: TextStyle(
-                                                          fontSize: 14.0, color: Colors.white),
+                                                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                                          fontSize: 14.0,),
                                                     ),
                                                     Text(
                                                       "Author Name",
                                                       overflow: TextOverflow.ellipsis,
-                                                      style: TextStyle(
-                                                          fontSize: 12.0, color: Colors.grey),
+                                                      style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                                          fontSize: 12.0,),
                                                     ),
                                                   ],
                                                 ),

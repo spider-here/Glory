@@ -25,8 +25,8 @@ class events extends StatelessWidget{
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
         title: InkWell(
             onTap: () {
@@ -34,14 +34,9 @@ class events extends StatelessWidget{
             },
             child: const SizedBox(
                 width: double.maxFinite,
-                child: AutoSizeText(
-                  "Events",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18.0),
-                  maxLines: 1,
-                ))),
+                child: AutoSizeText("Events", textAlign: TextAlign.center, maxLines: 1,))),
         centerTitle: true,
-        titleTextStyle: const TextStyle(color: Colors.white),
+        titleTextStyle: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 18.0),
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -66,11 +61,10 @@ class events extends StatelessWidget{
         physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
         children: [
-          const ListTile(
+          ListTile(
             title: Text(
               "Trending Events near you",
-              style: TextStyle(
-                  color: Colors.white,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -135,8 +129,8 @@ class events extends StatelessWidget{
                             Align(
                               alignment: FractionalOffset.bottomCenter,
                               child: Container(
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade800,
                                   borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(20.0),
                                       bottomRight: Radius.circular(20.0)
@@ -144,8 +138,8 @@ class events extends StatelessWidget{
                                 ),
                                 child: ListTile(
                                   dense: true,
-                                  title: const Text("This is the title", style: TextStyle(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
-                                  subtitle: const Text("This is the subtitle",  overflow: TextOverflow.ellipsis),
+                                  title: const Text("This is the title", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
+                                  subtitle: const Text("This is the subtitle", style: TextStyle(color: Colors.white,), overflow: TextOverflow.ellipsis),
                                   trailing: Text("\$99.99", style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold)),),
                               ),
                             ),
@@ -157,10 +151,9 @@ class events extends StatelessWidget{
                 }),
           ),
           ListTile(
-            title: const Text(
+            title: Text(
               "Category",
-              style: TextStyle(
-                  color: Colors.white,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -197,14 +190,14 @@ class events extends StatelessWidget{
                             width: double.maxFinite,
                             height: 30.0,
                             padding: const EdgeInsets.all(5.0),
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade800,
                               borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(20.0),
                                   bottomRight: Radius.circular(20.0)
                               ),
                             ),
-                            child: const Center(child: Text("Title", overflow: TextOverflow.ellipsis,)),
+                            child: const Center(child: Text("Title", overflow: TextOverflow.ellipsis, style: TextStyle(color: Colors.white),)),
                           ),
                         ),
                       ),
@@ -213,10 +206,9 @@ class events extends StatelessWidget{
                 }),
           ),
           ListTile(
-            title: const Text(
+            title: Text(
               "Upcoming Events",
-              style: TextStyle(
-                  color: Colors.white,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -250,8 +242,8 @@ class events extends StatelessWidget{
                         child: Align(
                           alignment: FractionalOffset.bottomCenter,
                           child: Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade800,
                               borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(20.0),
                                   bottomRight: Radius.circular(20.0)
@@ -259,8 +251,8 @@ class events extends StatelessWidget{
                             ),
                             child: const ListTile(
                               dense: true,
-                              title: Text("Title", style: TextStyle(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
-                              subtitle: Text("Subtitle",  overflow: TextOverflow.ellipsis),
+                              title: Text("Title", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white), overflow: TextOverflow.ellipsis,),
+                              subtitle: Text("Subtitle",  overflow: TextOverflow.ellipsis, style: TextStyle(color: Colors.white),),
                             ),
                           ),
                         ),
@@ -270,10 +262,9 @@ class events extends StatelessWidget{
                 }),
           ),
           ListTile(
-            title: const Text(
+            title: Text(
               "Nearest City",
-              style: TextStyle(
-                  color: Colors.white,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -310,14 +301,14 @@ class events extends StatelessWidget{
                             width: double.maxFinite,
                             height: 30.0,
                             padding: const EdgeInsets.all(5.0),
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade800,
                               borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(20.0),
                                   bottomRight: Radius.circular(20.0)
                               ),
                             ),
-                            child: const Center(child: Text("Title", overflow: TextOverflow.ellipsis,)),
+                            child: const Center(child: Text("Title", overflow: TextOverflow.ellipsis, style: TextStyle(color: Colors.white),)),
                           ),
                         ),
                       ),

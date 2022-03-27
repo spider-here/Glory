@@ -12,14 +12,14 @@ class register extends StatelessWidget{
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         centerTitle: true,
-        title: const Text("Create an Account", style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold),),
-        iconTheme: const IconThemeData(
-          color: Colors.white
+        title: Text("Create an Account", style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 16.0, fontWeight: FontWeight.bold),),
+        iconTheme: IconThemeData(
+            color: Theme.of(context).textTheme.bodyText1?.color
         ),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
       ),
       body: SingleChildScrollView(
@@ -50,9 +50,9 @@ class register extends StatelessWidget{
                 TextField(
                   style: TextStyle(color: Theme.of(context).primaryColor),
                   keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    label: Text("Phone Number", style: TextStyle(color: Colors.white,)),
-                    prefixIcon: Icon(Icons.phone_iphone_outlined, color: Colors.white,),
+                  decoration: InputDecoration(
+                    label: Text("Phone Number", style: Theme.of(context).textTheme.bodyText1),
+                    prefixIcon: Icon(Icons.phone_iphone_outlined, color: Theme.of(context).textTheme.bodyText1?.color,),
                   ),
                 ),
                 // Padding(padding: const EdgeInsets.only(top: 30.0)),
@@ -60,9 +60,9 @@ class register extends StatelessWidget{
                 TextField(
                   style: TextStyle(color: Theme.of(context).primaryColor),
                   keyboardType: TextInputType.text,
-                  decoration: const InputDecoration(
-                    label: Text("Email", style: TextStyle(color: Colors.white,)),
-                    prefixIcon: Icon(Icons.mail_outline, color: Colors.white,),
+                  decoration: InputDecoration(
+                    label: Text("Email", style: Theme.of(context).textTheme.bodyText1),
+                    prefixIcon: Icon(Icons.mail_outline, color: Theme.of(context).textTheme.bodyText1?.color,),
                   ),
                 ),
                 // Padding(padding: const EdgeInsets.only(top: 30.0)),
@@ -71,9 +71,9 @@ class register extends StatelessWidget{
                 TextField(
                   obscureText: true,
                   style: TextStyle(color: Theme.of(context).primaryColor),
-                  decoration: const InputDecoration(
-                    label: Text("Password", style: TextStyle(color: Colors.white,)),
-                    prefixIcon: Icon(Icons.lock_outline, color: Colors.white,),
+                  decoration: InputDecoration(
+                    label: Text("Password", style: Theme.of(context).textTheme.bodyText1),
+                    prefixIcon: Icon(Icons.lock_outline, color: Theme.of(context).textTheme.bodyText1?.color,),
                   ),
                 ),
                 // Padding(padding: const EdgeInsets.only(top: 50.0)),
@@ -94,7 +94,7 @@ class register extends StatelessWidget{
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Already have an account? ", style: TextStyle( fontSize: 14.0, color: Colors.white),),
+                        Text("Already have an account? ", style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 14.0,),),
                         InkWell(onTap: ()=>Get.back(), child: Text("Log in Now", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0, color: Theme.of(context).primaryColor),))
                       ],
                     )

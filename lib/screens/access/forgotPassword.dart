@@ -9,13 +9,13 @@ class forgotPassword extends StatelessWidget{
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        iconTheme: const IconThemeData(
-            color: Colors.white
+        iconTheme: IconThemeData(
+            color: Theme.of(context).textTheme.bodyText1?.color
         ),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.light,
-          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
       ),
       body: Container(
@@ -24,19 +24,19 @@ class forgotPassword extends StatelessWidget{
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Text("Forgot Password?", style: TextStyle(color: Colors.white, fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
+            Text("Forgot Password?", style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
             const Padding(padding: EdgeInsets.only(top: 10.0)),
-            const Text(
+            Text(
               "Enter your phone number below to receive your password reset instruction.",
-              style: TextStyle(color: Colors.white, fontSize: 14.0),
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 14.0),
             ),
             const Padding(padding: EdgeInsets.only(top: 30.0)),
             TextField(
               style: TextStyle(color: Theme.of(context).primaryColor),
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                label: Text("Phone Number", style: TextStyle(color: Colors.white,)),
-                prefixIcon: Icon(Icons.phone_iphone_outlined, color: Colors.white,),
+              decoration: InputDecoration(
+                label: Text("Phone Number", style: Theme.of(context).textTheme.bodyText1),
+                prefixIcon: Icon(Icons.phone_iphone_outlined, color: Theme.of(context).textTheme.bodyText1?.color,),
               ),
             ),
             const Padding(padding: EdgeInsets.only(top: 30.0)),

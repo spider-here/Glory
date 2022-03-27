@@ -19,7 +19,7 @@ class story extends StatelessWidget {
           extendBodyBehindAppBar: true,
           appBar: AppBar(
             systemOverlayStyle: SystemUiOverlayStyle(
-              statusBarColor: Theme.of(context).backgroundColor,
+              statusBarColor: Colors.black,
               statusBarBrightness: Brightness.dark,
               statusBarIconBrightness: Brightness.light,
             ),

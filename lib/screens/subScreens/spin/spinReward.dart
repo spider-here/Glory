@@ -14,12 +14,12 @@ class spinReward extends StatelessWidget{
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(color: Theme.of(context).textTheme.bodyText1?.color),
       ),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
@@ -31,7 +31,7 @@ class spinReward extends StatelessWidget{
                   Text(
                     "You have won $_dummyReward from Glory World.",
                     textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white, fontSize: 14.0),
+                    style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 14.0),
                   ),
                   Card(
                     shape: RoundedRectangleBorder(

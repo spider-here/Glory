@@ -23,32 +23,31 @@ class profile extends StatelessWidget {
         extendBodyBehindAppBar: false,
         appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: Theme.of(context).backgroundColor,
-        statusBarBrightness: Brightness.dark,
-        statusBarIconBrightness: Brightness.light,),
+          statusBarColor: Theme.of(context).backgroundColor,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,),
           title: InkWell(
               onTap: () {},
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       "Username",
-                      style: TextStyle(
-                          color: Colors.white,
+                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
                           fontWeight: FontWeight.bold,
                           fontSize: 14.0),
                     ),
                     Icon(
                       Icons.arrow_drop_down,
-                      color: Colors.white,
+                      color: Theme.of(context).textTheme.bodyText1?.color,
                     )
                   ])),
           centerTitle: true,
-          iconTheme: const IconThemeData(
-              color: Colors.white
+          iconTheme: IconThemeData(
+              color: Theme.of(context).textTheme.bodyText1?.color
           ),
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.transparent,
           elevation: 0.0,
           bottom: const PreferredSize(preferredSize: Size.fromHeight(2.0),
             child: Padding(
@@ -86,16 +85,16 @@ class profile extends StatelessWidget {
                             ),
                     )),
               ),
-              const Text(
+              Text(
                 "@user_name",
-                style: TextStyle(
-                    color: Colors.white,
+                style: Theme.of(context).textTheme.bodyText1?.copyWith(
                     fontWeight: FontWeight.bold,
                     fontSize: 14.0),
               ),
               Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: _widgets.profilePageStats(
+                    context: context,
                       totalFollowers: "14",
                       totalFollowing: "38",
                       totalLikes: "91",
@@ -123,7 +122,7 @@ class profile extends StatelessWidget {
                                 fontFamily: 'Poppins',
                             )
                         ),
-                      foregroundColor: MaterialStateProperty.all(Colors.white),
+                      foregroundColor: MaterialStateProperty.all(Theme.of(context).textTheme.bodyText1?.color),
                     )
                   ),
                   const Padding(padding: EdgeInsets.only(right: 10.0)),
@@ -137,14 +136,7 @@ class profile extends StatelessWidget {
                               color: Colors.grey
                           )
                       ),
-                      textStyle: MaterialStateProperty.all<TextStyle>(
-                          const TextStyle(
-                              fontFamily: 'Poppins',
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold
-                          )
-                      ),
-                      foregroundColor: MaterialStateProperty.all(Colors.white),
+                      foregroundColor: MaterialStateProperty.all(Theme.of(context).textTheme.bodyText1?.color),
                     )
                   ),
                 ],
@@ -154,17 +146,17 @@ class profile extends StatelessWidget {
                 indicatorColor: Theme.of(context).primaryColor,
                 enableFeedback: true,
                 onTap: (index) {},
-                tabs: const [
+                tabs: [
                   Tab(
                     icon: Icon(
                       Icons.calendar_today_rounded,
-                      color: Colors.white,
+                      color: Theme.of(context).textTheme.bodyText1?.color,
                     ),
                   ),
                   Tab(
                     icon: Icon(
                       Icons.favorite_outline_rounded,
-                      color: Colors.white,
+                      color: Theme.of(context).textTheme.bodyText1?.color,
                     ),
                   ),
 
@@ -213,31 +205,30 @@ class profile extends StatelessWidget {
         appBar: AppBar(
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: Theme.of(context).backgroundColor,
-            statusBarBrightness: Brightness.dark,
-            statusBarIconBrightness: Brightness.light,),
+            statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+            statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,),
           title: InkWell(
               onTap: () {},
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       "Username",
-                      style: TextStyle(
-                          color: Colors.white,
+                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
                           fontWeight: FontWeight.bold,
                           fontSize: 14.0),
                     ),
                     Icon(
                       Icons.arrow_drop_down,
-                      color: Colors.white,
+                      color: Theme.of(context).textTheme.bodyText1?.color,
                     )
                   ])),
           centerTitle: true,
-          iconTheme: const IconThemeData(
-              color: Colors.white
+          iconTheme: IconThemeData(
+              color: Theme.of(context).textTheme.bodyText1?.color
           ),
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.transparent,
           elevation: 0.0,
           bottom: const PreferredSize(preferredSize: Size.fromHeight(2.0),
             child: Padding(
@@ -274,16 +265,16 @@ class profile extends StatelessWidget {
                       ),
                     )),
               ),
-              const Text(
+              Text(
                 "@user_name",
-                style: TextStyle(
-                    color: Colors.white,
+                style: Theme.of(context).textTheme.bodyText1?.copyWith(
                     fontWeight: FontWeight.bold,
                     fontSize: 14.0),
               ),
               Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: _widgets.profilePageStats(
+                    context: context,
                       totalFollowers: "14",
                       totalFollowing: "38",
                       totalLikes: "91",
@@ -311,7 +302,7 @@ class profile extends StatelessWidget {
                               fontFamily: 'Poppins',
                             )
                         ),
-                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                        foregroundColor: MaterialStateProperty.all(Theme.of(context).textTheme.bodyText1?.color),
                       )
                   ),
                   const Padding(padding: EdgeInsets.only(right: 10.0)),
@@ -325,7 +316,7 @@ class profile extends StatelessWidget {
                                 color: Colors.grey
                             )
                         ),
-                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                        foregroundColor: MaterialStateProperty.all(Theme.of(context).textTheme.bodyText1?.color),
                       )
                   ),
                 ],

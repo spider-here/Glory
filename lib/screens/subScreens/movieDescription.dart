@@ -33,13 +33,14 @@ class movieDescription extends StatelessWidget {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Theme.of(context).backgroundColor,
-            statusBarBrightness: Brightness.dark,
-            statusBarIconBrightness: Brightness.light,),
+            statusBarColor: Colors.transparent,
+            statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+            statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
-          iconTheme: const IconThemeData(color: Colors.white),
-          actionsIconTheme: const IconThemeData(color: Colors.white),
+          iconTheme: IconThemeData(
+              color: Theme.of(context).textTheme.bodyText1?.color
+          ),
         ),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -62,8 +63,7 @@ class movieDescription extends StatelessWidget {
                   children: [
                     Text(
                       _movieName,
-                      style: const TextStyle(
-                          color: Colors.white,
+                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0),
                     ),
@@ -71,41 +71,39 @@ class movieDescription extends StatelessWidget {
                     Container(
                         padding: const EdgeInsets.all(2.0),
                         decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.circular(5.0),
-                            border:
-                                Border.all(color: Colors.white, width: 0.5)),
+                            color: Colors.grey.shade800,
+                            borderRadius: BorderRadius.circular(5.0),),
                         child: Text(
                           _videoMaxQuality,
-                          style: const TextStyle(color: Colors.white, fontSize: 10.0),
+                          style: TextStyle(color: Colors.white, fontSize: 10.0),
                         )),
                   ],
                 ),
                 subtitle: Row(
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
                       child: Icon(
                         Icons.access_time_outlined,
-                        color: Colors.grey,
+                        color: Theme.of(context).textTheme.bodyText2?.color,
                         size: 20.0,
                       ),
                     ),
                     const Padding(padding: EdgeInsets.only(left: 4.0)),
                     Text(
                       _movieTotalMinutes + " minutes",
-                      style: const TextStyle(color: Colors.grey, fontSize: 12.0),
+                      style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 12.0),
                     ),
                     const Padding(padding: EdgeInsets.only(left: 15.0)),
-                    const Icon(
+                    Icon(
                       Icons.star_rate_outlined,
-                      color: Colors.grey,
+                      color: Theme.of(context).textTheme.bodyText2?.color,
                       size: 20.0,
                     ),
                     const Padding(padding: EdgeInsets.only(left: 4.0)),
                     Text(
                       _movieRating,
-                      style: const TextStyle(color: Colors.grey, fontSize: 12.0),
+                      style: Theme.of(context).textTheme.bodyText2?.copyWith( fontSize: 12.0),
                     )
                   ],
                 ),
@@ -121,15 +119,15 @@ class movieDescription extends StatelessWidget {
                   children: [
                     SizedBox(
                         width: MediaQuery.of(context).size.width / 2.2,
-                        child: const Text(
+                        child: Text(
                           "Release date",
-                          style: TextStyle(color: Colors.white, fontSize: 16.0),
+                          style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 16.0),
                         )),
                     SizedBox(
                         width: MediaQuery.of(context).size.width / 2.2,
-                        child: const Text(
+                        child: Text(
                           "Genre",
-                          style: TextStyle(color: Colors.white, fontSize: 16.0),
+                          style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 16.0),
                         )),
                   ],
                 ),
@@ -139,7 +137,7 @@ class movieDescription extends StatelessWidget {
                       width: MediaQuery.of(context).size.width / 2.2,
                       child: Text(
                         _movieReleaseDate,
-                        style: const TextStyle(color: Colors.grey, fontSize: 12.0),
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 12.0),
                       ),
                     ),
                     SizedBox(
@@ -149,17 +147,19 @@ class movieDescription extends StatelessWidget {
                         itemCount: _movieGenre.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.grey, width: 0.5),
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: Center(
-                                child: Text(
-                              _movieGenre[index],
-                              style:
-                                  const TextStyle(color: Colors.grey, fontSize: 12.0),
-                            )),
+                          return InkWell(
+                            onTap: (){},
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade800,
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              child: Center(
+                                  child: Text(
+                                _movieGenre[index],
+                                style:
+                                    const TextStyle(color: Colors.white, fontSize: 12.0),
+                              )),
+                            ),
                           );
                         },
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -180,12 +180,12 @@ class movieDescription extends StatelessWidget {
                 ),
               ),
               ListTile(
-                  title: const Text(
+                  title: Text(
                     "Description",
-                    style: TextStyle(color: Colors.white, fontSize: 16.0),
+                    style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 16.0),
                   ),
                   subtitle: Text(_movieDescription,
-                      style: const TextStyle(color: Colors.grey, fontSize: 12.0))),
+                      style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 12.0))),
               const Padding(
                 padding: EdgeInsets.only(left: 20.0, right: 20.0),
                 child: Divider(
@@ -193,10 +193,9 @@ class movieDescription extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: const Text(
+                title: Text(
                   "Related Movies",
-                  style: TextStyle(
-                      color: Colors.white,
+                  style: Theme.of(context).textTheme.bodyText1?.copyWith(
                       fontWeight: FontWeight.bold,
                       fontSize: 18.0),
                 ),

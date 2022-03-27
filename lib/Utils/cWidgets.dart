@@ -7,10 +7,10 @@ import 'package:glory/screens/subScreens/spin/spinWheel.dart';
 
 class cWidgets{
 
-  Widget profilePageStats({required String totalFollowers,
+  Widget profilePageStats({required BuildContext context, required String totalFollowers,
     required String totalFollowing, required String totalLikes,
     required onTapFollowers, required onTapFollowing,
-    required onTapLikes, }){
+    required onTapLikes,}){
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -21,9 +21,9 @@ class cWidgets{
           child: Column(
             children: [Text(
               totalFollowers,
-              style: const TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.bodyText1?.copyWith( fontSize: 14.0, fontWeight: FontWeight.bold),
             ),
-              const Text("Followers", style: TextStyle(color: Colors.grey, fontSize: 12.0),)
+              Text("Followers", style: Theme.of(context).textTheme.bodyText2?.copyWith( fontSize: 12.0),)
             ]
           ),
         ),
@@ -33,9 +33,9 @@ class cWidgets{
           child: Column(
             children: [Text(
               totalFollowing,
-              style: const TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.bodyText1?.copyWith( fontSize: 14.0, fontWeight: FontWeight.bold),
             ),
-              const Text("Following", style: TextStyle(color: Colors.grey, fontSize: 12.0),)
+              Text("Following", style: Theme.of(context).textTheme.bodyText2?.copyWith( fontSize: 12.0),)
             ]
           ),
         ),
@@ -45,9 +45,9 @@ class cWidgets{
           child: Column(
             children: [Text(
               totalLikes,
-              style: const TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.bodyText1?.copyWith( fontSize: 14.0, fontWeight: FontWeight.bold),
             ),
-              const Text("Likes", style: TextStyle(color: Colors.grey, fontSize: 12.0),)
+              Text("Likes", style: Theme.of(context).textTheme.bodyText2?.copyWith( fontSize: 12.0),)
             ]
           ),
         ),
@@ -61,9 +61,10 @@ class cWidgets{
         onPressed: () {Get.to(()=>cart(), transition: Transition.rightToLeft);},
         splashColor: Theme.of(context).primaryColor,
         splashRadius: 20.0,
-        icon: const ImageIcon(
+        icon: ImageIcon(
           AssetImage('assets/images/cart_bag.png'),
-          color: Colors.white,
+          color: Theme.of(context).textTheme.bodyText1?.color,
+          size: 24.0,
         ));
   }
 
@@ -72,9 +73,10 @@ Widget wheelButton({required BuildContext context}){
         onPressed: () {Get.to(()=>spinWheel(), transition: Transition.rightToLeft);},
         splashColor: Theme.of(context).primaryColor,
         splashRadius: 20.0,
-        icon: const ImageIcon(
+        icon: ImageIcon(
           AssetImage('assets/images/spin_wheel.png'),
-          color: Colors.white,
+          color: Theme.of(context).textTheme.bodyText1?.color,
+          size: 24.0,
         ));
   }
 

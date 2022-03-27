@@ -26,8 +26,8 @@ class music extends StatelessWidget {
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
         title: InkWell(
             onTap: () {
@@ -35,14 +35,9 @@ class music extends StatelessWidget {
             },
             child: const SizedBox(
                 width: double.maxFinite,
-                child: AutoSizeText(
-                  "Music",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18.0),
-                  maxLines: 1,
-                ))),
+                child: AutoSizeText("Music", textAlign: TextAlign.center, maxLines: 1,))),
         centerTitle: true,
-        titleTextStyle: const TextStyle(color: Colors.white),
+        titleTextStyle: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 18.0),
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -96,10 +91,9 @@ class music extends StatelessWidget {
           ),
           const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: const Text(
+            title: Text(
               "Popular Playlists",
-              style: TextStyle(
-                  color: Colors.white,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -137,18 +131,18 @@ class music extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            children: const [
+                            children: [
                               Text(
                                 "Song Name",
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontSize: 14.0, color: Colors.white),
+                                style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                    fontSize: 14.0,),
                               ),
                               Text(
                                 "Artist Name",
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontSize: 12.0, color: Colors.grey),
+                                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                    fontSize: 12.0,),
                               ),
                             ],
                           ),
@@ -160,10 +154,9 @@ class music extends StatelessWidget {
           ),
           const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: const Text(
+            title: Text(
               "Top Songs",
-              style: TextStyle(
-                  color: Colors.white,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -190,29 +183,28 @@ class music extends StatelessWidget {
                             image: NetworkImage(_dummyAlbum[index]),
                             fit: BoxFit.cover)),
                   ),
-                  title: const Text(
+                  title: Text(
                     "Title",
-                    style: TextStyle(color: Colors.white, fontSize: 14),
+                    style: Theme.of(context).textTheme.bodyText1?.copyWith( fontSize: 14),
                     overflow: TextOverflow.ellipsis,
                   ),
-                  subtitle: const Text(
+                  subtitle: Text(
                     "Subtile",
-                    style: TextStyle(color: Colors.grey, fontSize: 12),
+                    style: Theme.of(context).textTheme.bodyText2?.copyWith( fontSize: 12),
                     overflow: TextOverflow.ellipsis,
                   ),
-                  trailing: const Text(
+                  trailing: Text(
                     "5:30",
-                    style: TextStyle(color: Colors.grey, fontSize: 12),
+                    style: Theme.of(context).textTheme.bodyText2?.copyWith( fontSize: 12),
                     overflow: TextOverflow.ellipsis,
                   ),
                 );
               }),
           const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: const Text(
+            title: Text(
               "Albums",
-              style: TextStyle(
-                  color: Colors.white,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -268,10 +260,9 @@ class music extends StatelessWidget {
           ),
           const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: const Text(
+            title: Text(
               "Artists",
-              style: TextStyle(
-                  color: Colors.white,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -309,18 +300,18 @@ class music extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            children: const [
+                            children: [
                               Text(
                                 "Song Name",
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontSize: 14.0, color: Colors.white),
+                                style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                    fontSize: 14.0,),
                               ),
                               Text(
                                 "Artist Name",
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontSize: 12.0, color: Colors.grey),
+                                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                    fontSize: 12.0,),
                               ),
                             ],
                           ),
@@ -332,10 +323,9 @@ class music extends StatelessWidget {
           ),
           const Padding(padding: EdgeInsets.only(top: 10.0)),
           ListTile(
-            title: const Text(
+            title: Text(
               "What's New",
-              style: TextStyle(
-                  color: Colors.white,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -373,18 +363,18 @@ class music extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            children: const [
+                            children:[
                               Text(
                                 "Song Name",
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontSize: 14.0, color: Colors.white),
+                                style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                    fontSize: 14.0,),
                               ),
                               Text(
                                 "Artist Name",
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontSize: 12.0, color: Colors.grey),
+                                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                    fontSize: 12.0,),
                               ),
                             ],
                           ),

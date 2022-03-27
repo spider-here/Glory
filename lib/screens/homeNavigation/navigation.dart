@@ -6,7 +6,6 @@ import 'package:glory/screens/homeNavigation/story.dart';
 import 'package:glory/screens/homeNavigation/streaming.dart';
 import 'books.dart';
 import 'events.dart';
-import 'more.dart';
 import 'music.dart';
 
 class navigation extends StatelessWidget {
@@ -31,27 +30,19 @@ class navigation extends StatelessWidget {
         ),
         extendBody: true,
         bottomNavigationBar: ClipRRect(
-        borderRadius: const BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), ),
+        borderRadius: const BorderRadius.only(topLeft: Radius.circular(25.0), topRight: Radius.circular(25.0), ),
       child: BottomNavigationBar(
           currentIndex: getController.selectedIndex,
             onTap: (int index){
             getController.updateIndex(index);
             _navController.jumpToPage(index);
             },
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.grey.shade900,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        unselectedItemColor: Colors.grey,
-        selectedItemColor: Theme.of(context).primaryColor,
-        unselectedIconTheme: const IconThemeData(
-          size: 24.0
-        ),
-        selectedIconTheme: IconThemeData(
-          size: 26.0,
-              color: Theme.of(context).primaryColor,
-        ),
-
+        // type: BottomNavigationBarType.shifting,
+        // backgroundColor: Colors.grey.shade900,
+        // showSelectedLabels: false,
+        // showUnselectedLabels: false,
+        // unselectedItemColor: Colors.grey,
+        // selectedItemColor: Theme.of(context).primaryColor,
             items: const [
               BottomNavigationBarItem(
                 label: "Reels", icon: Icon(Icons.donut_large_outlined),
@@ -73,10 +64,6 @@ class navigation extends StatelessWidget {
                 label: "Events", icon: Icon(Icons.event_outlined),
                   activeIcon: Icon(Icons.event_rounded)
               ),
-              BottomNavigationBarItem(
-                label: "More", icon: Icon(Icons.more_horiz_rounded),
-              ),
-
             ],
         ),
         ),
@@ -90,7 +77,6 @@ class navigation extends StatelessWidget {
             music(),
             books(),
             events(),
-            more(),
           ],
         ),
       );

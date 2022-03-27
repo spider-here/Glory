@@ -8,6 +8,7 @@ import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'login.dart';
 
 class welcome extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +19,8 @@ class welcome extends StatelessWidget {
         elevation: 0.0,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
       ),
       body: Center(
@@ -44,12 +45,14 @@ class welcome extends StatelessWidget {
                                 child: Container(
                                   width: 213.28,
                                   height: 291.85,
-                                  color: const Color(0xFF406752),
+                                  color: MediaQuery.of(context).platformBrightness == Brightness.light? Theme.of(context).primaryColor : const Color(0xFF406752),
                                 )),
                           ),
                           Align(
                             alignment: FractionalOffset.center,
-                            child: Image.asset('assets/images/curved_line.png', width: MediaQuery.of(context).size.width,)),
+                            child: Image.asset('assets/images/curved_line.png',
+                              color: MediaQuery.of(context).platformBrightness == Brightness.light? Theme.of(context).primaryColor : const Color(0xFF406752),
+                              width: MediaQuery.of(context).size.width,)),
                           Align(
                               alignment: FractionalOffset.center,
                               child: Card(
@@ -65,22 +68,22 @@ class welcome extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(20.0, 40.0, 20.0, 20.0),
                       child: RichText(text: TextSpan(
                           children: [
-                            const TextSpan(text: "Experience Social Media\n", style: TextStyle(color: Colors.white, fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold),),
-                            const TextSpan(text: "Your Way With ", style: TextStyle(color: Colors.white, fontSize: 20.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
+                            TextSpan(text: "Experience Social Media\n", style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 18.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold),),
+                            TextSpan(text: "Your Way With ", style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 20.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
                             TextSpan(text: "Glory World", style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 20.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold)),
                           ]
                       ),
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(20.0),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
                       child: Text(
                         "Use social media your way and let your followers use it their way."
                             " You can have the experience you want without ever using another"
                             " app, at anytime.",
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white, fontSize: 12.0),
+                        style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 12.0),
                       ),
                     ),
                     const Padding(

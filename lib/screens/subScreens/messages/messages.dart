@@ -35,31 +35,33 @@ class messages extends StatelessWidget {
         appBar: AppBar(
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: Theme.of(context).backgroundColor,
-            statusBarBrightness: Brightness.dark,
-            statusBarIconBrightness: Brightness.light,
+            statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+            statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
           ),
           title: InkWell(
               onTap: () {},
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
+                  children:[
                     AutoSizeText(
                       "@user_name",
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 18.0),
+                      style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 18.0),
                       maxLines: 1,
                     ),
                     Icon(
                       Icons.arrow_drop_down,
-                      color: Colors.white,
+                      color: Theme.of(context).textTheme.bodyText1?.color,
                     )
                   ])),
           centerTitle: false,
           titleTextStyle: const TextStyle(color: Colors.white),
-          iconTheme: const IconThemeData(color: Colors.white),
+          iconTheme: IconThemeData(
+              color: Theme.of(context).textTheme.bodyText1?.color
+          ),
           backgroundColor: Colors.transparent,
-          elevation: 10.0,
+          elevation: 0.0,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(65.0),
             child: Column(
@@ -69,7 +71,7 @@ class messages extends StatelessWidget {
                   margin: const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
                   height: 35.0,
                   decoration: BoxDecoration(
-                      color: Colors.grey.shade800,
+                      color: MediaQuery.of(context).platformBrightness == Brightness.light? Colors.grey.shade100 : Colors.grey.shade800,
                       borderRadius: BorderRadius.circular(10.0)),
                   child: TextFormField(
                     style: const TextStyle(color: Colors.white),
@@ -82,9 +84,9 @@ class messages extends StatelessWidget {
                       ),
                       suffixIcon: InkWell(
                           onTap: () {},
-                          child: const Icon(
+                          child: Icon(
                             Icons.filter_alt_outlined,
-                            color: Colors.white,
+                            color: MediaQuery.of(context).platformBrightness == Brightness.light? Colors.black : Colors.white,
                           )),
                       hintStyle: const TextStyle(color: Colors.grey),
                       isDense: true,
@@ -97,8 +99,8 @@ class messages extends StatelessWidget {
                     ),
                   ),
                 ),
-                const TabBar(
-                  labelColor: Colors.white,
+                TabBar(
+                  labelColor: Theme.of(context).textTheme.bodyText1?.color,
                   indicatorSize: TabBarIndicatorSize.label,
                   tabs: [
                     Tab(
@@ -158,7 +160,7 @@ class messages extends StatelessWidget {
                   ),
                   title: Text(
                     _dummyTitle,
-                    style: const TextStyle(color: Colors.white, fontSize: 14),
+                    style: Theme.of(context).textTheme.bodyText1?.copyWith( fontSize: 14),
                     overflow: TextOverflow.ellipsis,
                   ),
                   subtitle: Text(
@@ -200,7 +202,7 @@ class messages extends StatelessWidget {
                   ),
                   title: Text(
                     _dummyTitle,
-                    style: const TextStyle(color: Colors.white, fontSize: 14),
+                    style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 14),
                     overflow: TextOverflow.ellipsis,
                   ),
                   subtitle: Text(
@@ -242,7 +244,7 @@ class messages extends StatelessWidget {
                     ),
                     title: Text(
                       _dummyTitle,
-                      style: const TextStyle(color: Colors.white, fontSize: 14),
+                      style: Theme.of(context).textTheme.bodyText1?.copyWith( fontSize: 14),
                       overflow: TextOverflow.ellipsis,
                     ),
                     subtitle: Text(

@@ -14,8 +14,8 @@ class chat extends StatelessWidget{
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Theme.of(context).backgroundColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: MediaQuery.of(context).platformBrightness == Brightness.light? Brightness.light:Brightness.dark,
+          statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.dark? Brightness.light:Brightness.dark,
         ),
         title: ListTile(
           contentPadding: const EdgeInsets.all(0.0),
@@ -32,12 +32,14 @@ class chat extends StatelessWidget{
           ),
           title: AutoSizeText(
             _dummyUserName,
-            style: const TextStyle(fontSize: 18.0, color: Colors.white),
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 18.0,),
             maxLines: 1,
           ),
         ),
         titleTextStyle: const TextStyle(color: Colors.white),
-        iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(
+            color: Theme.of(context).textTheme.bodyText1?.color
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         leadingWidth: 30.0,
@@ -57,7 +59,6 @@ class chat extends StatelessWidget{
             onPressed: () {},
             icon: const Icon(
               Icons.more_vert_outlined,
-              color: Colors.white,
             ),
             splashColor: Theme.of(context).primaryColor,
             splashRadius: 20.0,)
@@ -65,9 +66,9 @@ class chat extends StatelessWidget{
       ),
       body: Stack(
         children: [
-          const Align(
+          Align(
             alignment: FractionalOffset.center,
-            child: Text("Chat content appears here.", style: TextStyle(color: Colors.grey, fontSize: 12.0)),
+            child: Text("Chat content appears here.", style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 12.0)),
 
             //Use Colors.grey.shade900 for incoming message bubble, Colors.grey.shade700 for outgoing
 
@@ -77,7 +78,7 @@ class chat extends StatelessWidget{
             child: Container(
               margin: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 15.0),
               decoration: BoxDecoration(
-                color: Colors.grey.shade900,
+                color: MediaQuery.of(context).platformBrightness == Brightness.light? Colors.grey.shade100 : Colors.grey.shade900,
                 borderRadius: BorderRadius.circular(50.0)
               ),
               child: TextField(
@@ -85,12 +86,14 @@ class chat extends StatelessWidget{
                   prefixIcon: Container(
                     margin: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade800,
+                      color: MediaQuery.of(context).platformBrightness == Brightness.light? Colors.white : Colors.grey.shade800,
                       borderRadius: BorderRadius.circular(100.0)
                     ),
                     child: InkWell(
                       onTap: (){},
-                        child: const Icon(Icons.photo_camera_rounded, color: Colors.grey, size: 20.0,)),
+                        child: Icon(Icons.photo_camera_rounded,
+                          color: MediaQuery.of(context).platformBrightness == Brightness.light? Colors.black : Colors.grey,
+                          size: 20.0,)),
                   ),
                   suffixIcon: Container(
                     width: MediaQuery.of(context).size.width/4,
@@ -100,7 +103,9 @@ class chat extends StatelessWidget{
                       children: [
                         InkWell(
                           onTap: (){},
-                          child:  const Icon(Icons.emoji_emotions_outlined, color: Colors.grey, size: 20.0,),
+                          child:  Icon(Icons.emoji_emotions_outlined,
+                            color: MediaQuery.of(context).platformBrightness == Brightness.light? Colors.black : Colors.grey,
+                            size: 20.0,),
                         ),
                         const Spacer(),
                         InkWell(
@@ -122,7 +127,7 @@ class chat extends StatelessWidget{
                   enabledBorder: InputBorder.none,
                 ),
                 maxLines: null,
-                style: const TextStyle(color: Colors.white),
+                style: Theme.of(context).textTheme.bodyText1,
                 keyboardType: TextInputType.multiline,
                 textAlignVertical: TextAlignVertical.center,
               ),
